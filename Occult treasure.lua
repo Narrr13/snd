@@ -1,5 +1,5 @@
---
---
+import("System.Numerics")
+require("NonuLuaLib")
 
 local positions = {
     { X = 618.74, Y = 66.30, Z = -701.76 },
@@ -26,6 +26,11 @@ local positions = {
 
 
 function main()
+    for _, p in ipairs(positions) do
+        Movement(p.x,pos.y,pos.z,false)
+        WaitForNavmesh()
+    end
+
 end
 
 main()
