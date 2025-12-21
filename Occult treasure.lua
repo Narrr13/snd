@@ -1,4 +1,5 @@
-..Lua
+--
+--
 
 local positions = {
     { X = 618.74, Y = 66.30, Z = -701.76 },
@@ -22,3 +23,9 @@ local positions = {
     { X = -709.20, Y = 63.65, Z = 194.17 },
     { X = -682.17, Y = 135.65, Z = -192.85 },
 }
+
+
+function main()
+end
+
+main()
