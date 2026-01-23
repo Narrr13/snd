@@ -5,81 +5,80 @@ import("System.Numerics")
 require("NonuLuaLib")
 
 local map60_558 = {
+    zoneId = 558, 
+    actions = {
+        -- Coffre 1
+        { pos = Vector3(-0.40,0.19,339.54), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 1st chamber is no longer sealed!", wait=1 },
+        { action="cleanBag" },
 
--- Coffre 1
-    { id = 1, pos = Vector3(-0.40,0.19,339.54), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 1st chamber is no longer sealed!", wait=1 },
---    { id = 2, pos = Vector3(-0.40,0.19,339.54), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
+        -- Door left
+        { pos = Vector3(-18.52,0.09,321.60), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 2nd chamber opens." ,wait=1 },
 
--- Door left
-    { id = 3, zoneId = 558, pos = Vector3(-18.52,0.09,321.60), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 2nd chamber opens." ,wait=1 },
+        -- Path to coffer 2
+        { pos = Vector3(-3.54,-7.52,269.17) },    
 
--- Path to coffer 2
-    { id = 4, pos = Vector3(-3.54,-7.52,269.17) },    
+        -- Coffre 2
+        { pos = Vector3(0.04,-7.8,214.89), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 2nd chamber is no longer sealed!", wait=1 },
+        { action="cleanBag"},
 
--- Coffre 2
-    { id = 5, pos = Vector3(0.04,-7.8,214.89), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 2nd chamber is no longer sealed!", wait=1 },
+        -- Door left
+        { pos = Vector3(-18.23,-7.8,196.82), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 3rd chamber opens." ,wait=1 },   
 
---    { id = 6, pos = Vector3(0.04,-7.8,214.89), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
-
--- Door left
-    { id = 7, zoneId = 558, pos = Vector3(-18.23,-7.8,196.82), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 3rd chamber opens." ,wait=1 },   
-
--- Path to coffer 3    
-    { id = 8, pos = Vector3(-3.32,-15.52,144.47) },    
+        -- Path to coffer 3    
+        { pos = Vector3(-3.32,-15.52,144.47) },    
     
--- Coffre3
-    { id = 9, pos = Vector3(0.26,-15.80,90.19), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 3rd chamber is no longer sealed!", wait=1 },
+        -- Coffre3
+        { pos = Vector3(0.26,-15.80,90.19), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 3rd chamber is no longer sealed!", wait=1 },
 
---    { id = 10, pos = Vector3(0.26,-15.80,90.19), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
+        --    { id = 10, pos = Vector3(0.26,-15.80,90.19), action="/p interactt", wait=2 },
+        { action="cleanBag"},
 
--- Door left    
-    { id = 11, zoneId = 558, pos = Vector3(-18.41,-15.90,71.42), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 4th chamber opens." ,wait=1 },   
+        -- Door left    
+        { pos = Vector3(-18.41,-15.90,71.42), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 4th chamber opens." ,wait=1 },   
+    
+        -- Path to coffer 4    
+        { pos = Vector3(-3.571,-23.45,19.36) },
+        -- Coffre4
+        { pos = Vector3(0.009,-23.73,-34.92), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 4th chamber is no longer sealed!", wait=1 },
 
--- Path to coffer 4    
-    { id = 12, pos = Vector3(-3.571,-23.45,19.36) },
--- Coffre4
-    { id = 13, pos = Vector3(0.009,-23.73,-34.92), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 4th chamber is no longer sealed!", wait=1 },
+        --    { id = 14, pos = Vector3(0.009,-23.73,-34.92), action="/p interactt", wait=2 },
+        { action="cleanBag"},
 
---    { id = 14, pos = Vector3(0.009,-23.73,-34.92), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
+        -- Door left
+        { pos = Vector3(-19.98,-23.8,-55.15), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 5th chamber opens." ,wait=1 },       
 
--- Door left
-    { id = 15, zoneId = 558, pos = Vector3(-19.98,-23.8,-55.15), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 5th chamber opens." ,wait=1 },       
+        -- Path to coffer 5
+        { pos = Vector3(-4.37 , -31.46 , -105.58) },    
 
--- Path to coffer 5
-    { id = 16, pos = Vector3(-4.37 , -31.46 , -105.58) },    
+        -- Coffre5
+        { pos = Vector3(-0.79,-31.74,-159.86), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 5th chamber is no longer sealed!", wait=1 },
+        --    { id = 18, pos = Vector3(-0.79,-31.74,-159.86), action="/p interactt", wait=2 },
+        { action="cleanBag"},
+        -- Door left
+        { pos = Vector3(-20.15,-31.90,-179.38), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 6th chamber opens." ,wait=1 },       
 
--- Coffre5
-    { id = 17, pos = Vector3(-0.79,-31.74,-159.86), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 5th chamber is no longer sealed!", wait=1 },
---    { id = 18, pos = Vector3(-0.79,-31.74,-159.86), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
--- Door left
-    { id = 19, zoneId = 558, pos = Vector3(-20.15,-31.90,-179.38), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the 6th chamber opens." ,wait=1 },       
+        -- Path to coffer 6
+        { pos = Vector3(-4.18 , -39.49 , -229.39) },    
 
--- Path to coffer 6
-    { id = 20, pos = Vector3(-4.18 , -39.49 , -229.39) },    
+        -- Coffre6
+        { pos = Vector3(-0.60,-39.77,-283.67), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 6th chamber is no longer sealed!", wait=1 },
+        --    { id = 22, pos = Vector3(-0.60,-39.77,-283.67), action="/p interactt", wait=2 },
+        { action="cleanBag"},
 
--- Coffre6
-    { id = 21, pos = Vector3(-0.60,-39.77,-283.67), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 6th chamber is no longer sealed!", wait=1 },
---    { id = 22, pos = Vector3(-0.60,-39.77,-283.67), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
+        -- Door left
+        { pos = Vector3(-18.67,-39.89,-303.83), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the final chamber opens." ,wait=1 },       
 
--- Door left
-    { id = 23, zoneId = 558, pos = Vector3(-18.67,-39.89,-303.83), action="/p interactd", checkOk = "%[(%d+):(%d+)%]The gate to the final chamber opens." ,wait=1 },       
+        -- Path to coffer 7
+        { pos = Vector3(-3.80 , -47.50 , -353.90) },    
 
--- Path to coffer 7
-    { id = 24, pos = Vector3(-3.80 , -47.50 , -353.90) },    
+        -- Coffre7
+        { pos = Vector3(-0.22,-47.78,-408.18), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 7th chamber is no longer sealed!", wait=1 },
+        --    { id = 26, pos = Vector3(-0.22,-47.78,-408.18), action="/p interactt", wait=2 },
+        { action="cleanBag"},
 
--- Coffre7
-    { id = 25, pos = Vector3(-0.22,-47.78,-408.18), action="/p interactt", checkOk = "%[(%d+):(%d+)%]The 7th chamber is no longer sealed!", wait=1 },
---    { id = 26, pos = Vector3(-0.22,-47.78,-408.18), action="/p interactt", wait=2 },
-    { id = 3, action="cleanBag"},
-
--- Exit
-   { id = 27, pos = Vector3(-0.21,-47.97,-424.38), action="/p interactd"}       
+        -- Exit
+       { pos = Vector3(-0.21,-47.97,-424.38), action="/p interactd"}       
+    }
 }
 
 local map70_794 = {
@@ -236,8 +235,7 @@ function main()
         do return end
     end
 
-    for _, p in ipairs(mapPlan) do
-        LogInfo("Début "..p.id)
+    for _, p in ipairs(mapPlan.actions) do
         if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
 
         if p.action ~= nil then 
@@ -295,7 +293,7 @@ function main()
                 end
                 
 
-                if Svc.ClientState.TerritoryType~=p.zoneId and p.zoneId ~= nil then 
+                if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
                     yield("/p autofollow")
                     do return end 
                 end
