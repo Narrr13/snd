@@ -156,11 +156,11 @@ function action.interact(type,multi)
     multi = multi or false
     if type==nil then do return end end
 
-    if type = "treasure" then
+    if type == "treasure" then
         yield("/p autooff")
         Sleep(1)
         yield("/p interactt)      
-    else if type = "door" then
+    else if type == "door" then
         yield("/p autooff")
         Sleep(1)
         yield("/p interactd)      
