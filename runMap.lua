@@ -1,6 +1,3 @@
---testtt
-
-
 import("System.Numerics")
 require("NonuLuaLib")
 
