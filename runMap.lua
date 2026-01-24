@@ -165,6 +165,7 @@ function action.cleanBag (multi)
         Sleep(1)
         yield("/p cleanBag")
                 
+        -- Check all have finished
         local obj1, dist1 = FindNearestObjectByName("Trea")
         local obj2 ,dist2 = FindNearestObjectByName("lea")
         local try=0
@@ -197,6 +198,11 @@ function action.cleanBag (multi)
     end
 end
 
+function action.movealittle()
+    yield ('/hold Z')
+    Sleep(1)
+    yield ('/release Z')    
+end
 
 function main()
 
@@ -221,18 +227,13 @@ function main()
         if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
 
         if p.action ~= nil then 
-            local f = action[nom]
+            local f = action[p.action.cmd]
             if type(f) == "function" then
-                f(table.unpack(args))
-            else
-                print("Fonction inconnue :", nom)
+                f(table.unpack(p.action.arg))
             end
-            --[[if p.action == "cleanBag" then
-                cleanBag(true)        
+            --[[
             elseif p.action == "movealittle" then
-                yield ('/hold Z')
-                Sleep(1)
-                yield ('/release Z')
+
 
             else
                 yield("/p autooff")
