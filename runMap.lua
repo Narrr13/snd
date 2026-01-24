@@ -1,6 +1,8 @@
 import("System.Numerics")
 require("NonuLuaLib")
 
+action = {}
+
 local map60_558 = {
     zoneId = 558, 
     actions = {
@@ -159,43 +161,47 @@ local map70_712 = {
 }
 
 
-function contient(tableau, v1, v2)
-    for _, element in ipairs(tableau) do
-        if element[1] == v1 and element[2] == v2 then
-            return true
-        end
-    end
-    return false
-end
-
-
-
-function cleanBag (multi)
+function action.cleanBag (multi)
     -- defaut multi false
-    if multi == nil then multi = false end
-    
-    yield("/p autooff")
-    Sleep(1)
-    yield("/p cleanBag")
-                
-    local obj1, dist1 = FindNearestObjectByName("Trea")
-    local obj2 ,dist2 = FindNearestObjectByName("lea")
-    local try=0
-    while true  do
+    multi = multi or false
+
+    if multi then
+        yield("/p autooff")
         Sleep(1)
+        yield("/p cleanBag")
+                
         local obj1, dist1 = FindNearestObjectByName("Trea")
         local obj2 ,dist2 = FindNearestObjectByName("lea")
-        if (obj1==nil and obj2==nil) or try > 11
-        then
-            break 
+        local try=0
+        while true  do
+            Sleep(1)
+            local obj1, dist1 = FindNearestObjectByName("Trea")
+            local obj2 ,dist2 = FindNearestObjectByName("lea")
+            if (obj1==nil and obj2==nil) or try > 11
+            then
+                break 
+            end
+    --                    if obj1~=nil then Movement(obj1.pos.X,p.pos.Y,p.pos.Z,false)
+            if dist1 < 1 then try=try+1 end
+        end 
+        Sleep(1)
+        yield("/p autofollow")
+    else
+        for i = 0, Svc.Objects.Length - 1 do
+            local obj = Svc.Objects[i]
+            if obj then
+                local name = obj.Name.TextValue
+                if name and (string.find(string.lower(name), string.lower("trea")) or string.find(string.lower(name), string.lower("leather"))) then
+                    Movement(obj.Position.X,obj.Position.Y,obj.Position.Z,false)
+                    yield("/target "..obj.Name.TextValue)
+                    yield("/interact")
+                    Sleep(1)            
+                end
+            end
         end
---                    if obj1~=nil then Movement(obj1.pos.X,p.pos.Y,p.pos.Z,false)
-        if dist1 < 1 then try=try+1 end
-    end 
-
-    Sleep(1)
-    yield("/p autofollow")                 
+    end
 end
+
 
 function main()
 
@@ -221,7 +227,7 @@ function main()
 
         if p.action ~= nil then 
             if p.action == "cleanBag" then
-                
+                cleanBag(true)        
             elseif p.action == "movealittle" then
                 yield ('/hold Z')
                 Sleep(1)
@@ -246,7 +252,7 @@ function main()
                 end
 
                 if lasth and lastm then
-                    if contient(tabLog,lasth..":"..lastm,p.checkOk) == false then
+                    if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
                         LogInfo("Pattern ajouté dans tableau")                                
                         table.insert(tabLog,{lasth..":"..lastm,p.checkOk}) 
                         checkDone = true 
