@@ -89,7 +89,7 @@ local map70_794 = {
         { pos = Vector3(100.10,0,110.60), wait=3 },
         { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},  
         { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action="cleanBag"},
+        { action = { cmd="cleanBag", arg={true} } },
         { pos = Vector3(100.24,0,83.49), action = { cmd="interact", arg={true, "door"} }, wait=2 }
     }
 }        
