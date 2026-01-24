@@ -1,7 +1,7 @@
 import("System.Numerics")
 require("NonuLuaLib")
 
-action = {}
+action = {1}
 tabLog = {}
 
 local map60_558 = {
