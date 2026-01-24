@@ -246,17 +246,7 @@ function main()
             if type(f) == "function" then
                 f(table.unpack(p.action.arg))
             end
-            --[[
-            elseif p.action == "movealittle" then
 
-
-            else
-                yield("/p autooff")
-                Sleep(1)
-                yield(p.action)    
-            end
-        end
-            ]]
         if p.checkOk ~= nil then
 
             while not(checkDone) do
@@ -296,10 +286,8 @@ function main()
         while IsPlayerAvailable("Really") ~= true do
             Sleep(0.5)
         end
-        
+            
         yield("/p autofollow")
-
-        LogInfo("Fin "..p.id)        
     end
 
 end
