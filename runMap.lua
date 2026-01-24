@@ -2,6 +2,7 @@ import("System.Numerics")
 require("NonuLuaLib")
 
 action = {}
+tabLog = {}
 
 local map60_558 = {
     zoneId = 558, 
@@ -223,7 +224,6 @@ function main()
 
     local checkDone = false
     local mapPlan = nil
-    local tabLog = {}
         
     if Svc.ClientState.TerritoryType == 558
     then
@@ -271,7 +271,7 @@ function main()
                 if lasth and lastm then
                     if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
                         LogInfo("Pattern ajouté dans tableau")                                
-                        table.insert(tabLog,{lasth..":"..lastm,p.checkOk}) 
+                        pushAndShift(tabLog,{lasth..":"..lastm,p.checkOk})
                         checkDone = true 
                     end
                 end
