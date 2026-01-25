@@ -275,14 +275,22 @@ function checkChatLog(multi,str,pattern,tabLog)
     --Si pas multi
     else
         localPattern="%[(.-)%]"..pattern.."$"
+        lasth=nil
         for i=1,#strTab do   
             h = string.match(strTab[i], localPattern)
-            if h ~= nil then
-                if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
-                    tabLogTmp={{h,localPattern}}
-                end
-            end
+            if h ~= nil then lasth=h end
         end    
+        if lasth and ((tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern)) or (tabLog ==nil) )) then
+            tabLogTmp={{h,localPattern}}
+        end
+        if #tabLogTmp==1 then
+            if tabLog~=nil then
+                pushAndShift(tabLog,tabLogTmp[1])
+            end
+            return true,tabLog
+        else
+            return false, tabLog
+        end
     end
     return false,tabLog
 end

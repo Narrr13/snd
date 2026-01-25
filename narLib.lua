@@ -31,7 +31,7 @@ function isContainedInTable(tableau, ...)
 end
 
 function pushAndShift(t, element,maxElement)
-    maxElement = mexElement or 100
+    maxElement = maxElement or 100
     table.insert(t, element)
     if #t > maxElement then
         table.remove(t, 1)
