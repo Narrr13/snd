@@ -266,8 +266,7 @@ function checkChatLog(multi,str,pattern,tabLog)
             do return true , tabLog end
         else
             do return false, tabLog end
-        end
-    end        
+        end     
     --Si pas multi
     else
 
@@ -300,6 +299,7 @@ function main()
             if type(f) == "function" then
                 f(table.unpack(p.action.arg))
             end
+        end
 
         if p.checkOk ~= nil then
 
