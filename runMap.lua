@@ -244,13 +244,17 @@ function checkChatLog(multi,str,pattern,tabLog)
         for i=0,Svc.Party.Length-1 do
             localPattern="%[(.-)%].-"..Svc.Party[i].Name.TextValue..".-"..pattern.."$"
             lasth = nil
+            lastj = nil
             for j=1,#strTab do   
                 h = string.match(strTab[j], localPattern)
-                if h ~= nil then lasth = h end
+                if h ~= nil then 
+                    lasth = h 
+                    lastj = j
+                end
             end
             --si pas table de check ou table de check et pattern pas contenu dedans                        
-            if lasth and ( (tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern)) or (tabLog ==nil))) then
-                tabLogTmp[Svc.Party[i].Name.TextValue]={lasth,localPattern}
+            if lasth and ( (tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern,strTab[lastj])) or (tabLog ==nil))) then
+                tabLogTmp[Svc.Party[i].Name.TextValue]={lasth,localPattern,strTab[lastj]}
             end
 
         end
@@ -276,12 +280,16 @@ function checkChatLog(multi,str,pattern,tabLog)
     else
         localPattern="%[(.-)%]"..pattern.."$"
         lasth=nil
+        lasti=nil
         for i=1,#strTab do   
             h = string.match(strTab[i], localPattern)
-            if h ~= nil then lasth=h end
+            if h ~= nil then 
+                lasth=h 
+                lasti=i
+            end
         end    
-        if lasth and ((tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern)) or (tabLog ==nil) )) then
-            tabLogTmp={ {lasth,localPattern} }
+        if lasth and ((tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern,strTab[lasti])) or (tabLog ==nil) )) then
+            tabLogTmp={ {lasth,localPattern,strTab[lasti]} }
         end
         if #tabLogTmp==1 then
             if tabLog~=nil then
