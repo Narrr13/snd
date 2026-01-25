@@ -283,8 +283,6 @@ function checkChatLog(multi,str,pattern,tabLog)
                 end
             end
         end    
-
-        If 
     end
     return false,tabLog
 end
