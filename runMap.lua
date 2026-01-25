@@ -185,20 +185,9 @@ function action.cleanBag (multi)
                 
         -- Check all have finished
         --Svc.Party.Length
-        local obj1, dist1 = FindNearestObjectByName("Trea")
-        local obj2 ,dist2 = FindNearestObjectByName("lea")
-        local try=0
-        while true  do
-            Sleep(1)
-            local obj1, dist1 = FindNearestObjectByName("Trea")
-            local obj2 ,dist2 = FindNearestObjectByName("lea")
-            if (obj1==nil and obj2==nil) or try > 11
-            then
-                break 
-            end
-    --                    if obj1~=nil then Movement(obj1.pos.X,p.pos.Y,p.pos.Z,false)
-            if dist1 < 1 then try=try+1 end
-        end 
+        while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"finiCleanbag",GtabLog)==false do
+            Sleep(2)
+        end
         Sleep(1)
         yield("/p autofollow")
     elseif multi == false then
