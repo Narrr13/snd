@@ -249,7 +249,7 @@ function checkChatLog(multi,str,pattern,tabLog)
                 if h ~= nil then lasth = h end
             end
             --si pas table de check ou table de check et pattern pas contenu dedans                        
-            if lasth and ( (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil))) then
+            if lasth and ( (tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern)) or (tabLog ==nil))) then
                 tabLogTmp[Svc.Party[i].Name.TextValue]={lasth,localPattern}
             end
 
