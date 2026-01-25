@@ -174,16 +174,17 @@ function action.interact(type,multi)
     end
 end
 
-function action.cleanBag (partyMemberCount)
+function action.cleanBag (multi)
     -- defaut multi false
-    partyMemberCount = partyMemberCount or 0
+    multi = multi or false
     
-    if partyMemberCount > 1 then
+    if multi then
         yield("/p autooff")
         Sleep(1)
         yield("/p cleanBag")
                 
         -- Check all have finished
+        --Svc.Party.Length
         local obj1, dist1 = FindNearestObjectByName("Trea")
         local obj2 ,dist2 = FindNearestObjectByName("lea")
         local try=0
@@ -200,7 +201,7 @@ function action.cleanBag (partyMemberCount)
         end 
         Sleep(1)
         yield("/p autofollow")
-    elseif partyMemberCount == 0 then
+    elseif multi == false then
         for i = 0, Svc.Objects.Length - 1 do
             local obj = Svc.Objects[i]
             if obj then
