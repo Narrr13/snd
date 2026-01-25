@@ -243,15 +243,16 @@ function checkChatLog(multi,str,pattern,tabLog)
     if multi then
         for i=0,Svc.Party.Length-1 do
             localPattern="%[(.-)%].-"..Svc.Party[i].Name.TextValue..".-"..pattern.."$"
+            lasth = nil
             for j=1,#strTab do   
                 h = string.match(strTab[j], localPattern)
-                if h ~= nil then
-                    --si pas table de check ou table de check et pattern pas contenu dedans                        
-                    if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
-                        tabLogTmp[Svc.Party[i].Name.TextValue]={h,localPattern}
-                    end
-                end
+                if h ~= nil then lasth = h end
             end
+            --si pas table de check ou table de check et pattern pas contenu dedans                        
+            if lasth and ( (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil))) then
+                tabLogTmp[Svc.Party[i].Name.TextValue]={lasth,localPattern}
+            end
+
         end
 
         --Si OK
@@ -267,7 +268,7 @@ function checkChatLog(multi,str,pattern,tabLog)
             end
 
             do return true , tabLog end
-        Si KO
+        --Si KO
         else
             do return false, tabLog end
         end     
