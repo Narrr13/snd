@@ -53,10 +53,12 @@ end
 
 --function qui affiche un tableau à 2dimension en loginfo
 function logTab2dim(tab)
+    local ss = ""
     for i=1,#tab do
         s="{"
-        for j=1,#tab[i] do
-            s = s..tab[i][j]..","
+        for j=1,#tab[i] do           
+            c = tab[i][j] or "nil"
+            s = s..tostring(c)..","
         end
         s=s.."}"
         ss=ss..s

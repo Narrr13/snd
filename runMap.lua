@@ -247,18 +247,19 @@ function checkChatLog(multi,str,pattern,tabLog)
                 if h ~= nil then
                     --si pas table de check ou table de check et pattern pas contenu dedans                        
                     if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
-                        table.insert(tabLogTmp,{Svc.Party[i].Name.TextValue,h,localPattern})
+                        table.insert(tabLogTmp,{h,localPattern})
                     end
                 end
             end
         end
-        
-        logTab2dim(tabLogTmp)
+
+
         if #tabLogTmp == Svc.Party.Length then 
             --si OK 
             if tabLog~=nil then
                 for i=1,#tabLogTmp do
                     --insert dans table tabLog
+                    LogInfo("on insert")
                     pushAndShift(tabLog,tabLogTmp[i])
                 end
             end
