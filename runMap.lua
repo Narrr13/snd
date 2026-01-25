@@ -281,7 +281,7 @@ function checkChatLog(multi,str,pattern,tabLog)
             if h ~= nil then lasth=h end
         end    
         if lasth and ((tabLog ~=nil and not(isContainedInTable(tabLog,lasth,localPattern)) or (tabLog ==nil) )) then
-            tabLogTmp={{h,localPattern}}
+            tabLogTmp={{lasth,localPattern}}
         end
         if #tabLogTmp==1 then
             if tabLog~=nil then
