@@ -40,6 +40,30 @@ function pushAndShift(t, element,maxElement)
 end
 
 
+function strSplit(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
+--function qui affiche un tableau à 2dimension en loginfo
+function logTab2dim(tab)
+    for i=1,#tab do
+        s="{"
+        for j=1,#tab[i] do
+            s = s..tab[i][j]..","
+        end
+        s=s.."}"
+        ss=ss..s
+    end
+    LogInfo(ss)
+end
+
 
 --[[
 function contient(tableau, v1, v2)

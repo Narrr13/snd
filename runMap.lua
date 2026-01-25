@@ -2,7 +2,7 @@ import("System.Numerics")
 require("NonuLuaLib")
 
 action = {}
-tabLog = {}
+GtabLog = {}
 
 local map60_558 = {
     zoneId = 558, 
@@ -223,6 +223,57 @@ function action.movealittle()
     yield ('/release Z')    
 end
 
+-- Vérifie si pattern présents dans str
+-- Mode multi, ajout le nom du personnage dans le pattern et vérifie que pour tous les personnages du groupe, le pattern est présent
+-- Peux vérifier dans un tableau tabLog si pattern déjà enregistré
+-- Si match & tableau, on enrichie le tableau
+function checkChatLog(multi,str,pattern,tabLog)
+    multi=multi or false
+
+    local strTab={}
+    local localPattern = ""
+    local tabLogTmp = {}
+
+    strTab=strSplit(str,"\r")
+
+    if (strTab==nil) or (multi and Svc.Party.Length==0) then do return false end end
+    --if (multi and Svc.Party.Length==0)
+    
+    if multi then
+        for i=0,Svc.Party.Length-1 do
+            localPattern="%[(.-)%].-"..Svc.Party[i].Name.TextValue..".-"..pattern.."$"
+            for j=1,#strTab do   
+                h = string.match(strTab[j], localPattern)
+                if h ~= nil then
+                    --si pas table de check ou table de check et pattern pas contenu dedans                        
+                    if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
+                        table.insert(tabLogTmp,{Svc.Party[i].Name.TextValue,h,localPattern})
+                    end
+                end
+            end
+        end
+        
+        logTab2dim(tabLogTmp)
+        if #tabLogTmp == Svc.Party.Length then 
+            --si OK 
+            if tabLog~=nil then
+                for i=1,#tabLogTmp do
+                    --insert dans table tabLog
+                    pushAndShift(tabLog,tabLogTmp[i])
+                end
+            end
+
+            do return true , tabLog end
+        else
+            do return false, tabLog end
+        end
+    end        
+    --Si pas multi
+    else
+
+    end
+end
+
 function main()
 
     local checkDone = false
@@ -264,7 +315,7 @@ function main()
                 if lasth and lastm then
                     if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
                         LogInfo("Pattern ajouté dans tableau")                                
-                        pushAndShift(tabLog,{lasth..":"..lastm,p.checkOk})
+                        pushAndShift(GtabLog,{lasth..":"..lastm,p.checkOk})
                         checkDone = true 
                     end
                 end
