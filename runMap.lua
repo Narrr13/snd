@@ -227,6 +227,7 @@ end
 -- Mode multi, ajout le nom du personnage dans le pattern et vérifie que pour tous les personnages du groupe, le pattern est présent
 -- Peux vérifier dans un tableau tabLog si pattern déjà enregistré
 -- Si match & tableau, on enrichie le tableau
+-- pas multi, enregistre dans tablelog le dernier qui match
 function checkChatLog(multi,str,pattern,tabLog)
     multi=multi or false
 
@@ -247,31 +248,44 @@ function checkChatLog(multi,str,pattern,tabLog)
                 if h ~= nil then
                     --si pas table de check ou table de check et pattern pas contenu dedans                        
                     if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
-                        table.insert(tabLogTmp,{h,localPattern})
+                        tabLogTmp[Svc.Party[i].Name.TextValue]={h,localPattern}
                     end
                 end
             end
         end
 
-
-        if #tabLogTmp == Svc.Party.Length then 
-            --si OK 
+        --Si OK
+        local count=0
+        for _ in pairs(tabLogTmp) do count = count + 1 end
+        if count == Svc.Party.Length then 
+            -- Si il faut insérer dans table de suivi
             if tabLog~=nil then
-                for i=1,#tabLogTmp do
+                for i=0,Svc.Party.Length-1 do
                     --insert dans table tabLog
-                    LogInfo("on insert")
-                    pushAndShift(tabLog,tabLogTmp[i])
+                    pushAndShift(tabLog,tabLogTmp[Svc.Party[i].Name.TextValue])
                 end
             end
 
             do return true , tabLog end
+        Si KO
         else
             do return false, tabLog end
         end     
     --Si pas multi
     else
+        localPattern="%[(.-)%]"..pattern.."$"
+        for i=1,#strTab do   
+            h = string.match(strTab[i], localPattern)
+            if h ~= nil then
+                if (tabLog ~=nil and not(isContainedInTable(tabLog,h,localPattern)) or (tabLog ==nil) ) then
+                    tabLogTmp={{h,localPattern}}
+                end
+            end
+        end    
 
+        If 
     end
+    return false,tabLog
 end
 
 function main()

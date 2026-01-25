@@ -67,6 +67,41 @@ function logTab2dim(tab)
 end
 
 
+function tableToString(t, indent, visited)
+    indent = indent or 0
+    visited = visited or {}
+
+    if type(t) ~= "table" then
+        return tostring(t)
+    end
+    -- évite les références circulaires
+    if visited[t] then
+        return "<circular>"
+    end
+    visited[t] = true
+
+    local spacing = string.rep(" ", indent)
+    local result = "{\n"
+
+    for k, v in pairs(t) do
+        local key
+        if type(k) == "string" then
+            key = string.format('["%s"]', k)
+        else
+            key = "[" .. tostring(k) .. "]"
+        end
+
+        result = result
+            .. spacing .. "  "
+            .. key .. " = "
+            .. tableToString(v, indent + 2, visited)
+            .. ",\n"
+    end
+
+    result = result .. spacing .. "}"
+    return result
+end
+
 --[[
 function contient(tableau, v1, v2)
     for _, element in ipairs(tableau) do
