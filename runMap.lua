@@ -8,52 +8,52 @@ local map60_558 = {
     zoneId = 558, 
     actions = {
         -- Coffre 1
-        { pos = Vector3(-0.40,0.19,339.54), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 1st chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(-0.40,0.19,339.54), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 1st chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-18.52,0.09,321.60), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 2nd chamber opens." ,wait=1 },
+        { pos = Vector3(-18.52,0.09,321.60), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 2nd chamber opens." ,wait=1 },
         -- Path to coffer 2
         { pos = Vector3(-3.54,-7.52,269.17) },    
         -- Coffre 2
-        { pos = Vector3(0.04,-7.8,214.89), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 2nd chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(0.04,-7.8,214.89), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 2nd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-18.23,-7.8,196.82), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 3rd chamber opens." ,wait=1 },   
+        { pos = Vector3(-18.23,-7.8,196.82), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 3rd chamber opens." ,wait=1 },   
         -- Path to coffer 3    
         { pos = Vector3(-3.32,-15.52,144.47) },       
         -- Coffre3
-        { pos = Vector3(0.26,-15.80,90.19), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 3rd chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(0.26,-15.80,90.19), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 3rd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left    
-        { pos = Vector3(-18.41,-15.90,71.42), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 4th chamber opens." ,wait=1 },      
+        { pos = Vector3(-18.41,-15.90,71.42), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 4th chamber opens." ,wait=1 },      
         -- Path to coffer 4    
         { pos = Vector3(-3.571,-23.45,19.36) },
         -- Coffre4
-        { pos = Vector3(0.009,-23.73,-34.92), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 4th chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(0.009,-23.73,-34.92), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 4th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-19.98,-23.8,-55.15), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 5th chamber opens." ,wait=1 },       
+        { pos = Vector3(-19.98,-23.8,-55.15), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 5th chamber opens." ,wait=1 },       
         -- Path to coffer 5
         { pos = Vector3(-4.37 , -31.46 , -105.58) },    
         -- Coffre5
-        { pos = Vector3(-0.79,-31.74,-159.86), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 5th chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(-0.79,-31.74,-159.86), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 5th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-20.15,-31.90,-179.38), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 6th chamber opens." ,wait=1 },       
+        { pos = Vector3(-20.15,-31.90,-179.38), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 6th chamber opens." ,wait=1 },       
         -- Path to coffer 6
         { pos = Vector3(-4.18 , -39.49 , -229.39) },    
         -- Coffre6
-        { pos = Vector3(-0.60,-39.77,-283.67), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 6th chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(-0.60,-39.77,-283.67), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 6th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-18.67,-39.89,-303.83), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the final chamber opens." ,wait=1 },       
+        { pos = Vector3(-18.67,-39.89,-303.83), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the final chamber opens." ,wait=1 },       
         -- Path to coffer 7
         { pos = Vector3(-3.80 , -47.50 , -353.90) },    
         -- Coffre7
-        { pos = Vector3(-0.22,-47.78,-408.18), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The 7th chamber is no longer sealed!", wait=1 },
+        { pos = Vector3(-0.22,-47.78,-408.18), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 7th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Exit
-        { pos = Vector3(-0.21,-47.97,-424.38), action = { cmd="interact", arg={true, "door"} } }      
+        { pos = Vector3(-0.21,-47.97,-424.38), action = { cmd="interact", arg={true, "exit"} } }      
     }
 }
 
@@ -167,9 +167,9 @@ function action.interact(multi,type)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactt")      
-    elseif type == "door" or type == "bell" or type == "gate" then
+    elseif type == "door" or type == "bell" or type == "gate" or type == "exit" then
         PathToObject(type,false)
-        Sleep(2)
+        Sleep(3)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactd")      
@@ -324,7 +324,16 @@ function main()
 
         if p.checkOk ~= nil then
 
-            while not(checkDone) do
+            while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),p.checkOk,GtabLog) == false do
+                Sleep(1)
+                
+                if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
+                    yield("/p autofollow")
+                    do return end 
+                end
+            end
+            
+            --[[while not(checkDone) do
                 lasth = nil
                 lastm = nil
 
@@ -352,6 +361,7 @@ function main()
             end
 
             checkDone = false
+            ]]
  
         end    
 
