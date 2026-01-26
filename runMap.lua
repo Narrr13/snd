@@ -1,5 +1,6 @@
 import("System.Numerics")
 require("NonuLuaLib")
+require("NarLib")
 
 action = {}
 GtabLog = {}
@@ -313,6 +314,8 @@ function main()
     end
 
     for _, p in ipairs(mapPlan.actions) do
+        if p.condition==nil or checkCondition() then
+        
         if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
 
         if p.action ~= nil then 
