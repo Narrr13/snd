@@ -167,7 +167,9 @@ function action.interact(multi,type)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactt")      
-    elseif type == "door" then
+    elseif type == "door" or type == "bell" or type == "gate" then
+        PathToObject(type,false)
+        Sleep(2)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactd")      
