@@ -11,24 +11,30 @@ local map60_558 = {
         -- Coffre 1
         { pos = Vector3(-0.40,0.19,339.54), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 1st chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-18.52,0.09,321.60), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 2nd chamber opens." ,wait=1 },
-        -- Path to coffer 2
-        { pos = Vector3(-3.54,-7.52,269.17) },    
+        -- Door 
+        { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 2nd chamber opens." ,wait=1 },
+        -- Path to coffer 2 if door left
+        { condition = { cmd="checkCondition", arg={Vector3(-18.24386,0.09999728,321.8423) , 10} }, pos = Vector3(-3.54,-7.52,269.17) },    
+        -- Path to coffer 2 if door right
+        { condition = { cmd="checkCondition", arg={Vector3(18.988,0.09999683,321.5335) , 10} }, pos = Vector3(-0.008636862,-7.96638,263.09412) },    
         -- Coffre 2
         { pos = Vector3(0.04,-7.8,214.89), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 2nd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
-        { pos = Vector3(-18.23,-7.8,196.82), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 3rd chamber opens." ,wait=1 },   
-        -- Path to coffer 3    
-        { pos = Vector3(-3.32,-15.52,144.47) },       
+        { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 3rd chamber opens." ,wait=1 },   
+        -- Path to coffer 3 if door left
+        { condition = { cmd="checkCondition", arg={Vector3(-18.72284,-7.827942,196.0631) , 10} }, pos = Vector3(-3.32,-15.52,144.47) },    
+        -- Path to coffer 3 if door right
+        { condition = { cmd="checkCondition", arg={Vector3(18.84485,-7.827942,196.1852) , 10} }, pos = Vector3(-1.9026,-15.92,137.43) },    
         -- Coffre3
         { pos = Vector3(0.26,-15.80,90.19), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 3rd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
-        -- Door left    
-        { pos = Vector3(-18.41,-15.90,71.42), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 4th chamber opens." ,wait=1 },      
+        -- Door     
+        { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 4th chamber opens." ,wait=1 },      
+
         -- Path to coffer 4    
         { pos = Vector3(-3.571,-23.45,19.36) },
+        
         -- Coffre4
         { pos = Vector3(0.009,-23.73,-34.92), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 4th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
@@ -170,7 +176,7 @@ function action.interact(multi,type)
         yield("/p interactt")      
     elseif type == "door" or type == "bell" or type == "gate" or type == "exit" then
         PathToObject(type,false)
-        Sleep(3)
+        Sleep(2)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactd")      
@@ -230,8 +236,7 @@ function checkChatLog(multi,str,pattern,tabLog)
     strTab=strSplit(str,"\r")
 
     if (strTab==nil) or (multi and Svc.Party.Length==0) then do return false end end
-    --if (multi and Svc.Party.Length==0)
-    
+        
     if multi then
         for i=0,Svc.Party.Length-1 do
             localPattern="%[(.-)%].-"..Svc.Party[i].Name.TextValue..".-"..pattern.."$"
@@ -295,6 +300,21 @@ function checkChatLog(multi,str,pattern,tabLog)
     return false,tabLog
 end
 
+function checkCondition(conds)
+    if conds==nil then return false end
+    -- arg[1] - Position(vector3) arg[2] - Max Distance
+    if conds.cmd==maxDistBetweenPlayerAndPos then
+        if conds.arg[1].X==nil or conds.arg[1].Y==nil or conds.arg[1].Z==nil or type(conds.arg[2])~="number" then return false end
+        local pos = Player.Entity.Position
+        local dx = conds.arg[1].X - pos.X
+        local dy = conds.arg[1].Y - pos.Y
+        local dz = conds.arg[1].Z - pos.Z
+        if math.sqrt(dx * dx + dy * dy + dz * dz) < conds.arg[2] then return true else return false end
+    end
+    
+    return false
+end
+
 function main()
 
     local checkDone = false
@@ -314,68 +334,69 @@ function main()
     end
 
     for _, p in ipairs(mapPlan.actions) do
-        if p.condition==nil or checkCondition() then
+        if p.condition==nil or checkCondition(p.condition) then
         
-        if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
+            if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
 
-        if p.action ~= nil then 
-            local f = action[p.action.cmd]
-            if type(f) == "function" then
-                f(table.unpack(p.action.arg))
-            end
-        end
-
-        if p.checkOk ~= nil then
-
-            while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),p.checkOk,GtabLog) == false do
-                Sleep(1)
-                
-                if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
-                    yield("/p autofollow")
-                    do return end 
+            if p.action ~= nil then 
+                local f = action[p.action.cmd]
+                if type(f) == "function" then
+                    f(table.unpack(p.action.arg))
                 end
             end
-            
-            --[[while not(checkDone) do
-                lasth = nil
-                lastm = nil
 
-                for h,m in string.gmatch(GetNodeText("ChatLogPanel_0",1,2,3), p.checkOk) do
-                    lasth = h
-                    lastm = m
-                end
+            if p.checkOk ~= nil then
 
-                if lasth and lastm then
-                    if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
-                        LogInfo("Pattern ajouté dans tableau")                                
-                        pushAndShift(GtabLog,{lasth..":"..lastm,p.checkOk})
-                        checkDone = true 
+                while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),p.checkOk,GtabLog) == false do
+                    Sleep(1)
+                    
+                    if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
+                        yield("/p autofollow")
+                        do return end 
                     end
                 end
                 
+                --[[while not(checkDone) do
+                    lasth = nil
+                    lastm = nil
 
-                if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
-                    yield("/p autofollow")
-                    do return end 
+                    for h,m in string.gmatch(GetNodeText("ChatLogPanel_0",1,2,3), p.checkOk) do
+                        lasth = h
+                        lastm = m
+                    end
+
+                    if lasth and lastm then
+                        if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
+                            LogInfo("Pattern ajouté dans tableau")                                
+                            pushAndShift(GtabLog,{lasth..":"..lastm,p.checkOk})
+                            checkDone = true 
+                        end
+                    end
+                    
+
+                    if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
+                        yield("/p autofollow")
+                        do return end 
+                    end
+
+                    Sleep(1)
+
                 end
 
-                Sleep(1)
+                checkDone = false
+                ]]
+    
+            end    
 
+            if p.wait ~= nil then Sleep(p.wait) end
+                
+
+            while IsPlayerAvailable("Really") ~= true do
+                Sleep(0.5)
             end
-
-            checkDone = false
-            ]]
- 
-        end    
-
-        if p.wait ~= nil then Sleep(p.wait) end
-            
-
-        while IsPlayerAvailable("Really") ~= true do
-            Sleep(0.5)
+                
+            yield("/p autofollow")
         end
-            
-        yield("/p autofollow")
     end
 
 end
