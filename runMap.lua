@@ -159,7 +159,7 @@ local map70_712 = {
 }
 
 
-function action.interact(type,multi)
+function action.interact(multi,type)
     multi = multi or false
     if type==nil then do return end end
 
