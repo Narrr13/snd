@@ -14,32 +14,33 @@ local map60_558 = {
         -- Door 
         { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 2nd chamber opens." ,wait=1 },
         -- Path to coffer 2 if door left
-        { condition = { cmd="checkCondition", arg={Vector3(-18.24386,0.09999728,321.8423) , 10} }, pos = Vector3(-3.54,-7.52,269.17) },    
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(-18.24386,0.09999728,321.8423) , 10} }, pos = Vector3(-3.54,-7.52,269.17) },    
         -- Path to coffer 2 if door right
-        { condition = { cmd="checkCondition", arg={Vector3(18.988,0.09999683,321.5335) , 10} }, pos = Vector3(-0.008636862,-7.96638,263.09412) },    
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(18.988,0.09999683,321.5335) , 10} }, pos = Vector3(-0.008636862,-7.96638,263.09412) },    
         -- Coffre 2
         { pos = Vector3(0.04,-7.8,214.89), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 2nd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door left
         { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 3rd chamber opens." ,wait=1 },   
         -- Path to coffer 3 if door left
-        { condition = { cmd="checkCondition", arg={Vector3(-18.72284,-7.827942,196.0631) , 10} }, pos = Vector3(-3.32,-15.52,144.47) },    
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(-18.72284,-7.827942,196.0631) , 10} }, pos = Vector3(-3.32,-15.52,144.47) },    
         -- Path to coffer 3 if door right
-        { condition = { cmd="checkCondition", arg={Vector3(18.84485,-7.827942,196.1852) , 10} }, pos = Vector3(-1.9026,-15.92,137.43) },    
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(18.84485,-7.827942,196.1852) , 10} }, pos = Vector3(-1.9026,-15.92,137.43) },    
         -- Coffre3
         { pos = Vector3(0.26,-15.80,90.19), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 3rd chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
         -- Door     
         { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 4th chamber opens." ,wait=1 },      
-
-        -- Path to coffer 4    
-        { pos = Vector3(-3.571,-23.45,19.36) },
-        
+        -- Path to coffer 4 if door left
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(-18.71966,-15.8052,71.15055) , 10} }, pos = Vector3(-3.571,-23.45,19.36) },    
+        -- Path to coffer 4 if door right
+        { condition = { cmd="maxDistBetweenPlayerAndPos", arg={Vector3(18.66609,-15.8,71.34743) , 10} }, pos = Vector3(-0.6318162,-23.96077,12.559897) },               
         -- Coffre4
         { pos = Vector3(0.009,-23.73,-34.92), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "The 4th chamber is no longer sealed!", wait=1 },
         { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-19.98,-23.8,-55.15), action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 5th chamber opens." ,wait=1 },       
+        -- Door 
+        { action = { cmd="interact", arg={true, "door"} }, checkOk = "The gate to the 5th chamber opens." ,wait=1 },       
+        
         -- Path to coffer 5
         { pos = Vector3(-4.37 , -31.46 , -105.58) },    
         -- Coffre5
