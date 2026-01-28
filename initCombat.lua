@@ -1,18 +1,18 @@
 require "NonuLualib"
 
-if Player.Entity.Name == "Nar W'ia" then
+if Player.Entity.Name == "" then
     yield("/fulf on")
     yield("/fulf need")
     yield("/gearset change 30")
-elseif Player.Entity.Name == "Marcel Patoulachi" then
+elseif Player.Entity.Name == "" then
     yield("/fulf on")
     yield("/fulf pass")
     yield("/gearset change 23" )
-elseif Player.Entity.Name == "Jeanpierre Vidol" then
+elseif Player.Entity.Name == "" then
     yield("/fulf on")
     yield("/fulf pass")
     yield("/gearset change 1" )
-elseif Player.Entity.Name == "Robert Robichet" then
+elseif Player.Entity.Name == "" then
     yield("/fulf on")
     yield("/fulf pass")
     yield("/gearset change 13" )
