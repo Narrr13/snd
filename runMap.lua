@@ -3,83 +3,92 @@ require("NonuLuaLib")
 require("NarLib")
 
 action = {}
-checkin = {}
-checkout = {}
+checkIn = {}
+checkOut = {}
 
 GtabLog = {}
 
 local map60_558 = {
     zoneId = 558, 
     actions = {
+
         -- Coffre 1
         { action = { "moveTo", {Vector3(-0.40, 0.19, 339.54)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 1st chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
         -- Door 
-        { action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the 2nd chamber opens."}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 2 if door left
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(-18.24386, 0.09999728, 321.8423), 10} }, action = { "moveTo", {Vector3(-3.54, -7.52, 269.17)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.24386, 0.09999728, 321.8423), 10} }, action = { "moveTo", {Vector3(-3.54, -7.52, 269.17)} } },
         -- Path to coffer 2 if door right
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(18.988, 0.09999683, 321.5335), 10} }, action = { "moveTo", {Vector3(-0.008636862, -7.96638, 263.09412)} } },
-        
-    	-- Coffre 2
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.988, 0.09999683, 321.5335), 10} }, action = { "moveTo", {Vector3(-0.008636862, -7.96638, 263.09412)} } },
+      
+        -- Coffre 2
         { action = { "moveTo", {Vector3(0.04, -7.8, 214.89)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 2nd chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 2nd chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
         -- Door left
-        { action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the 3rd chamber opens."}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 3 if door left
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(-18.72284, -7.827942, 196.0631), 10} }, action = { "moveTo", {Vector3(-3.32, -15.52, 144.47)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.72284, -7.827942, 196.0631), 10} }, action = { "moveTo", {Vector3(-3.32, -15.52, 144.47)} } },
         -- Path to coffer 3 if door right
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(18.84485, -7.827942, 196.1852), 10} }, action = { "moveTo", {Vector3(-1.9026, -15.92, 137.43)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84485, -7.827942, 196.1852), 10} }, action = { "moveTo", {Vector3(-1.9026, -15.92, 137.43)} } },
         
-    	-- Coffre 3
+        -- Coffre 3
         { action = { "moveTo", {Vector3(0.26, -15.80, 90.19)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 3rd chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 3rd chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
         -- Door     
-        { action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the 4th chamber opens."}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 4 if door left
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(-18.71966, -15.8052, 71.15055), 10} }, action = { "moveTo", {Vector3(-3.571, -23.45, 19.36)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.71966, -15.8052, 71.15055), 10} }, action = { "moveTo", {Vector3(-3.571, -23.45, 19.36)} } },
         -- Path to coffer 4 if door right
-        { checkin = { "maxDistBetweenPlayerAndPos", {Vector3(18.66609, -15.8, 71.34743), 10} }, action = { "moveTo", {Vector3(-0.6318162, -23.96077, 12.559897)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.66609, -15.8, 71.34743), 10} }, action = { "moveTo", {Vector3(-0.6318162, -23.96077, 12.559897)} } },
         
-    	-- Coffre 4
+        -- Coffre 4
         { action = { "moveTo", {Vector3(0.009, -23.73, -34.92)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 4th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 4th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
-    
-    --[[
         -- Door 
-        { action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the 5th chamber opens."}}, wait=1 },
-            -- Path to coffer 5
-        { action = { "moveTo", {Vector3(-4.37, -31.46, -105.58)} } },    
-        
-    	-- Coffre 5
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        -- Path to coffer 5 if door left
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.68655,-23.79719,-53.73579), 10} }, action = { "moveTo", {Vector3(-4.37, -31.46, -105.58)} } },
+        -- Path to coffer 5 if door right
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.56171,-23.79719,-53.38192), 10} }, action = { "moveTo", {Vector3(-1.0583991,-31.999752,-113.785385)} } },
+
+        -- Coffre 5
         { action = { "moveTo", {Vector3(-0.79, -31.74, -159.86)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 5th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 5th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
-        -- Door left
-        { action = { "moveTo", {Vector3(-20.15, -31.90, -179.38)} } }, 
-    	{ action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the 6th chamber opens."}}, wait=1 },       
-        -- Path to coffer 6
-        { action = { "moveTo", {Vector3(-4.18, -39.49, -229.39)} } },    
-        
-    	-- Coffre 6
+        -- Door 
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        -- Path to coffer 6 if door left
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.82081,-31.78539,-179.0466), 10} }, action = { "moveTo", {Vector3(-4.18, -39.49, -229.39)} } },
+        -- Path to coffer 6 if door right
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.59067,-31.78539,-178.6838), 10} }, action = { "moveTo", {Vector3(0.0074997693,-39.9235,-237.82237)} } },
+
+
+        -- Coffre 6
         { action = { "moveTo", {Vector3(-0.60, -39.77, -283.67)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 6th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 6th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
-        -- Door left
-        { action = { "moveTo", {Vector3(-18.67, -39.89, -303.83)} }, wait=1, action = { "interact", {true, "door"} }, checkout = {"checkMsg", {"The gate to the final chamber opens."}}, wait=1 },       
-        -- Path to coffer 7
-        { action = { "moveTo", {Vector3(-3.80, -47.50, -353.90)} } },    
+        -- Door 
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 }
+--       ,
+--[[
+        -- Path to coffer 7 if door left
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.63135,-39.81079,-303.5477), 10} }, action = { "moveTo", {Vector3(-3.80, -47.50, -353.90)} } },
+        -- Path to coffer 7 if door right
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84708,-39.78058,-304.0876), 10} }, action = { "moveTo", {Vector3()} } },
+
         -- Coffre 7
         { action = { "moveTo", {Vector3(-0.22, -47.78, -408.18)} } },
-        { action = { "interact", {true, "treasure"} }, checkout = {"checkMsg", {"The 7th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 7th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
         -- Exit
-        { action = { "moveTo", {Vector3(-0.21, -47.97, -424.38)} }, action = { "interact", {true, "exit"} } }      
-    	]]
+        { action = { "interact", {true, "exit"} } wait=1 }
+--        { action = { "moveTo", {Vector3(-0.21, -47.97, -424.38)} }, action = { "interact", {true, "exit"} } }      
+        ]]
     }
 }
 
@@ -259,7 +268,7 @@ FIN ACTION IN FUNCTION
 CHECK IN FUNCTION
 ]]
 
-function checkin.maxDistBetweenPlayerAndPos(vect3,distance)
+function checkIn.maxDistBetweenPlayerAndPos(vect3,distance)
     if vect3.X==nil or vect3.Y==nil or vect3.Z==nil or type(distance)~="number" then return false end
     local pos = Player.Entity.Position
     local dx = vect3.X - pos.X
@@ -278,13 +287,15 @@ FIN CHECK IN FUNCTION
 CHECK OUT FUNCTION
 ]]
 
-function checkout.checkMsg(...)
+function checkOut.checkMsg(...)
     local patterns = {...}
     if #patterns == 0 then return false end
 
     while true do
         for _, pattern in ipairs(patterns) do
+            Echo(pattern)
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
+                Echo("c'est ok")
                 return true
             end
         end
@@ -430,7 +441,7 @@ function main()
     for _, p in ipairs(mapPlan.actions) do
         local canContinue = true
         if p.checkIn~=nil then
-            local f = action[p.checkIn[1]]
+            local f = checkIn[p.checkIn[1]]
             if type(f) == "function" then
                 canContinue = f(table.unpack(p.checkIn[2]))
             else
@@ -450,11 +461,13 @@ function main()
             end
 
             if p.checkOut ~= nil then
-
-                local f = action[p.checkOut[1]]
+                Echo("Check out a venir")
+                local f = checkOut[p.checkOut[1]]
                 if type(f) == "function" then
+                    Echo("fuunction ?")
                     if f(table.unpack(p.checkOut[2])) == false then return false end
                 else
+                    Echo("function ko")
                     return false
                 end   
             end    
