@@ -439,7 +439,6 @@ function main()
         end
             
         if canContinue then
---            if p.pos ~= nil then Movement(p.pos.X,p.pos.Y,p.pos.Z,false) end
 
             if p.action ~= nil then 
                 local f = action[p.action[1]]
@@ -457,48 +456,7 @@ function main()
                     if f(table.unpack(p.checkOut[2])) == false then return false end
                 else
                     return false
-                end
-
-                --[[
-                while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),p.checkOk,GtabLog) == false do
-                    Sleep(1)
-                    
-                    if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
-                        yield("/p autofollow")
-                        do return end 
-                    end
-                end
-                
-                while not(checkDone) do
-                    lasth = nil
-                    lastm = nil
-
-                    for h,m in string.gmatch(GetNodeText("ChatLogPanel_0",1,2,3), p.checkOk) do
-                        lasth = h
-                        lastm = m
-                    end
-
-                    if lasth and lastm then
-                        if isContainedInTable(tabLog,lasth..":"..lastm,p.checkOk) == false then
-                            LogInfo("Pattern ajouté dans tableau")                                
-                            pushAndShift(GtabLog,{lasth..":"..lastm,p.checkOk})
-                            checkDone = true 
-                        end
-                    end
-                    
-
-                    if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
-                        yield("/p autofollow")
-                        do return end 
-                    end
-
-                    Sleep(1)
-
-                end
-
-                checkDone = false
-                ]]
-    
+                end   
             end    
 
             if p.wait ~= nil then Sleep(p.wait) end
@@ -514,9 +472,7 @@ function main()
             Sleep(1)
             if Svc.ClientState.TerritoryType ~= mapPlan.zoneId then
                 return false
-            end
-            
-        end
+            end           
     end
 
 end
