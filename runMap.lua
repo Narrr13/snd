@@ -197,7 +197,7 @@ end
 
 function action.interact(multi,type)
     multi = multi or false
-    if type==nil then do return end end
+    if type==nil then return end
 
     if type == "treasure" then
         yield("/p autooff")
