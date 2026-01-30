@@ -278,9 +278,24 @@ FIN CHECK IN FUNCTION
 CHECK OUT FUNCTION
 ]]
 
+function checkout.checkMsg(...)
+    local patterns = {...}
+    if #patterns == 0 then return false end
+
+    while true do
+        for _, pattern in ipairs(patterns) do
+            if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
+                return true
+            end
+        end
+        Sleep(1)
+    end
+end
+
+--[[
 function checkout.checkMsg(pattern)
     if pattern == nil then return false end
-    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),p.checkOk,GtabLog) == false do
+    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),pattern,GtabLog) == false do
         Sleep(1)
         if Svc.ClientState.TerritoryType~=mapPlan.zoneId then 
             yield("/p autofollow")
@@ -289,6 +304,8 @@ function checkout.checkMsg(pattern)
     end
     return true
 and
+]]
+
 
 --[[
 FIN CHECK OUT FUNCTION
@@ -490,9 +507,15 @@ function main()
             while IsPlayerAvailable("Really") ~= true do
                 Sleep(0.5)
             end
-                
+           
+        end
+            
             yield("/p autofollow")
             Sleep(1)
+            if Svc.ClientState.TerritoryType ~= mapPlan.zoneId then
+                return false
+            end
+            
         end
     end
 
