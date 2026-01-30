@@ -293,7 +293,6 @@ function checkOut.checkMsg(...)
 
     while true do
         for _, pattern in ipairs(patterns) do
-            Echo(pattern)
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
                 Echo("c'est ok")
                 return true
@@ -464,10 +463,8 @@ function main()
                 Echo("Check out a venir")
                 local f = checkOut[p.checkOut[1]]
                 if type(f) == "function" then
-                    Echo("fuunction ?")
                     if f(table.unpack(p.checkOut[2])) == false then return false end
                 else
-                    Echo("function ko")
                     return false
                 end   
             end    
