@@ -103,7 +103,7 @@ end
 
 function MoveToMap(zoneId,x,y)
     local tp=true
-    a, dist =nearest_aetherite(zoneId,Vector3(x,0,y)
+    a, dist =nearest_aetherite(zoneId,Vector3(x,0,y))
     
     if zoneId==Svc.ClientState.TerritoryType then
         if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)) then tp=false end
