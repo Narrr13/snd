@@ -171,7 +171,7 @@ end
 function openTreasureTrap()
     yield("/p autofollow")
     Sleep(1)
-    waitUntilPlayer
+    waitUntilPlayer()
     if AcquireTarget("treasure")==false then return false end
     LogInfo("[Map] Treasure found")
     treasurePos=Entity.Target.Position
