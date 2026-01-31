@@ -18,6 +18,11 @@ require "luaSharp"
 import("System.Numerics")
 require "NarLib"
 
+function spam()
+    for i=1,20 do
+       yield("/e 1") 
+    end
+end
 
 function init()
     
@@ -133,6 +138,8 @@ function mountAll()
 end
 
 function MoveToMap(zoneId,x,y)
+    spam()
+    
     local distanceAtleast = 200
     local tp=true
     a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
