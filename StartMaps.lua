@@ -102,7 +102,7 @@ function waitParty()
         for i=0,Svc.Party.Length-1 do
             yield("/target "..Svc.Party[i].Name.TextValue)
             Sleep(0.5)
-            if Entity.Target.Name == Svc.Party[i].Name.TextValue then countParty = countParty + 1 end
+            if Entity.Target ~= nil and Entity.Target.Name == Svc.Party[i].Name.TextValue then countParty = countParty + 1 end
         end
     end
     return true    
