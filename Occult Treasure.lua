@@ -1,5 +1,10 @@
 import("System.Numerics")
 require("NonuLuaLib")
+require("NarLib")
+
+TIME_CHECK=180
+posAetheryte=Vector3(830.7468,72.98389,-695.97925)
+
 
 local positions = {
     { pos = Vector3(618.74, 66.30, -701.76) },  --1
@@ -133,17 +138,20 @@ function main()
 --    Sleep(3)
     yield("/gearset change 30")
 
-    while Svc.ClientState.TerritoryType ~= 1252 do
-        yield("/li occult")
-        while IPC.Lifestream.IsBusy() or not(IsPlayerAvailable("Really")) do
-            Sleep(1)
-        end
-        if IPC.Lifestream.IsBusy() then Echo("busy") else Echo("pas busy") end
-        Sleep(5)
+    local lastCheckTime = os.time()
+    local lastPos = Player.Entity.Position
 
-        yield("/bocchiillegal on")   
-            
-        while Svc.ClientState.TerritoryType == 1252 do
+    while true do
+        if Svc.ClientState.TerritoryType ~= 1252 then
+            yield("/li occult")
+            while IPC.Lifestream.IsBusy() or not(IsPlayerAvailable("Really")) do
+                Sleep(1)
+            end
+            if IPC.Lifestream.IsBusy() then Echo("busy") else Echo("pas busy") end
+            Sleep(5)
+            local lastPos = Player.Entity.Position    
+        else    
+            yield("/bocchiillegal on")
             yield("/rotation manual")
             yield("/bmrai on")
             local test = GetNodeText("ChatLogPanel_0",1,2,3)
@@ -181,6 +189,26 @@ function main()
             end
 
             Sleep(20)
+
+            if os.time() - lastCheckTime >= TIME_CHECK then 
+                Echo("[Check] Stuck")
+                if Vector3.Distance(Player.Entity.Position,posAetheryte) > 4 then
+                    Echo("[Check] loin aetheryte")
+                    if lastPos.X == Player.Entity.Position.X and lastPos.Y == Player.Entity.Position.Y and lastPos.Z == Player.Entity.Position.Z then
+                        --Stuck
+                        Echo("[Check] Destuck")
+                        yield("/bocchiillegal off")  
+                        yield("/return")
+                        Sleep(1)
+                        waitUntilPlayer()
+                        Movement(posAetheryte.X,posAetheryte.Y,posAetheryte.Z,false,3)
+                        yield("/bocchiillegal on")  
+                    end
+                lastCheckTime = os.time()
+                lastPos = Player.Entity.Position
+            end
+        
+    end
 
         
         end
