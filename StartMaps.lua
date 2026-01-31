@@ -112,8 +112,12 @@ function MoveToMap(zoneId,x,y)
     if tp then 
         LogInfo("[Map] Teleportation incoming "..a.Name)
         Instances.Telepo:Teleport(a.AetherId, 0) end
+        while Player.Entity.IsCasting ==false do
+            Sleep(0.5)
+        end
     end
 
+    
     waitUntilPlayer()
     LogInfo("TP terminé ?")
     
