@@ -57,11 +57,12 @@ function openMap()
         yield("/p openmap70special")
     end
   
-    while checkChat("ChatLogPanel_3","openMapDone") < Svc.Party.Length do
+    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"openMapDone")==false do
         Sleep(1)
     end
-    LogInfo("[Map] Maps open")
+    LogInfo("[Map] Open maps done")
     
+    --On récupère les coordonnées des maps
     local ChatLogStringArray = cs_instance("FFXIVClientStructs.FFXIV.Client.UI.Arrays.ChatLogStringArray")
     local PayloadType = load_type("Dalamud.Game.Text.SeStringHandling.PayloadType")
     load_type("Dalamud.Utility.CStringExtensions")
@@ -70,23 +71,16 @@ function openMap()
     for p in luanet.each(chat.Payloads) do
         if p.Type == PayloadType.MapLink then
             table.insert(arrayMap,{i,p}) 
-            LogInfo("[Map] Maps add "..i.." : "..p.TerritoryType.RowId.."  "..p.XCoord.." "..p.YCoord)
+            LogInfo("[Map] Maps add "..i.." : "..p.TerritoryType.RowId.."  "..p.rawX.." "..p.rawY)
             i=i+1
         end
     end
+    LogInfo("[Map] Store maps coordinates done ("..#arrayMap.." maps)")
     return arrayMap
 
 end
 
--- Return nomber occurs of text in string
-function checkChat(chatlog,pattern)
-    --"ChatLogPanel_0"
-    local count = 0
-    for _ in string.gmatch(GetNodeText(chatlog,1,2,3), pattern) do
-        count = count + 1
-    end
-    return count 
-end
+
 
 function main()
     local arrayMap = {}    
@@ -100,18 +94,19 @@ function main()
     
         if #arrayMap == 0 then 
             LogInfo("[Map] No more map")
-            do return end 
+            return true
         end
 
         for _, map in ipairs(arrayMap) do
 
-            if checkChat("ChatLogPanel_3","stopMap")>=1 then 
+            --[[if checkChat("ChatLogPanel_3","stopMap")>=1 then 
                 LogInfo("[Map] Map script stop")
                 do return end 
-            end        
+            end 
+            ]]       
 
             a=nearest_aetherite(map.TerritoryType.RowId,Vector3(p.rawX,0,P.rawY))
-            Echo(a.AetherId)
+            LogInfo(a.AetherId)
 
 --Move Coordinate
             
@@ -126,8 +121,8 @@ function main()
 end
 
 
---main()
-
+main()
+--[[]
     yield("/li Spriggan")
     WaitForLifestream()
     Sleep(1)
@@ -145,3 +140,4 @@ end
     yield("/maps")
     yield("/p initCombat")
     Sleep(2)
+]]
