@@ -161,15 +161,14 @@ function MoveToMap(zoneId,x,y)
     allTogether()
     mountAll()
     
-    posMap=IPC.vnavmesh.PointOnFloor(Vector3(x,300,y), true, 0)
+    posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
     if posMap ~= nil then
      if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
     end
-    --movetomap
-    --dismount
     
-
-    
+    yield("/mount")
+    return true
+    LogInfo("[Map] Move done")      
 end
 
 
