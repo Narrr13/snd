@@ -97,16 +97,16 @@ end
 
 
 function waitParty()
-    
-    while count~=Svc.Party.Length do
+    LogInfo("[Map] Wait party member")
+    while countParty~=Svc.Party.Length do
         local countParty=0
         for i=0,Svc.Party.Length-1 do
             yield("/target "..Svc.Party[i].Name.TextValue)
             Sleep(0.5)
-
+            if Entity.Target.Name == Svc.Party[i].Name.TextValue then countParty = countParty + 1 end
         end
     end
-    
+    return true    
 end
 
 
@@ -136,6 +136,7 @@ function MoveToMap(zoneId,x,y)
     waitUntilPlayer()
     
     waitParty()
+    LogInfo("ils sont la")
     allTogether()
     --Wait other part member
     --All together
