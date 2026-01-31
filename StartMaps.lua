@@ -18,6 +18,7 @@ require "luaSharp"
 import("System.Numerics")
 require "NarLib"
 
+
 function init()
     
     if mapId==0 or (mapId~=12243 and mapId~=24794) then 
@@ -46,7 +47,8 @@ function init()
     return true
 end
 
-function MoveTo()
+function MoveToMaps(map,multi)
+
 end
 
 function openMap()
@@ -70,8 +72,9 @@ function openMap()
     local i=1
     for p in luanet.each(chat.Payloads) do
         if p.Type == PayloadType.MapLink then
-            table.insert(arrayMap,{i,p}) 
-            LogInfo("[Map] Maps add "..i.." : "..p.TerritoryType.RowId.."  "..p.rawX.." "..p.rawY)
+            table.insert(arrayMap,{p.TerritoryType.RowId,p.RawX,p.RawY}) 
+            LogInfo(p)
+            LogInfo("[Map] Maps add "..i.." : "..p.TerritoryType.RowId.."  "..p.RawX.." "..p.RawY)
             i=i+1
         end
     end
@@ -80,7 +83,22 @@ function openMap()
 
 end
 
+-- Chercher les cartes prio à traiter (carte dans la même zone)
+local function findPriorityIndex(queue)
+    local currentZone = Svc.ClientState.TerritoryType
+    for i = 1, #queue do
+        if queue[i][1] == currentZone then
+            return i
+        end
+    end
+    return 1 -- no priority task → take first
+end
 
+
+function processMap(zoneId, x, y)
+    LogInfo("[Map] Début Map"..zoneId.." "..x.." "..y)
+    if zoneId == nil or x == nil or y == nil then return false end
+end
 
 function main()
     local arrayMap = {}    
@@ -96,23 +114,26 @@ function main()
             LogInfo("[Map] No more map")
             return true
         end
+        
+        while #arrayMap > 0 do
+            local indexMap = findPriorityIndex(arrayMap)
+            local map = arrayMap[indexMap]
+            local zoneId, x, y = map[1], map[2], map[3]
 
-        for _, map in ipairs(arrayMap) do
+            processMap(zoneId, x, y)
+            table.remove(arrayMap, index)
+        end
 
-            --[[if checkChat("ChatLogPanel_3","stopMap")>=1 then 
-                LogInfo("[Map] Map script stop")
-                do return end 
-            end 
-            ]]       
+            MoveToMap(map,multi)
 
-            a=nearest_aetherite(map.TerritoryType.RowId,Vector3(p.rawX,0,P.rawY))
+            a=nearest_aetherite(map[1],Vector3(map[2],0,map[3]))
             LogInfo(a.AetherId)
 
 --Move Coordinate
             
 
         end
-
+        break
 
 
         Sleep(1)
