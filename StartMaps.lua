@@ -156,14 +156,93 @@ function MoveToMap(zoneId,x,y)
     return true     
 end
 
-function Dig()
+function dig()
     LogInfo("[Map] Try dig ")
     Sleep(2)
     waitUntilPlayer()
-    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!") == false do
+    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!")  do
         yield("/p dig")
+        Sleep(2)
         waitUntilPlayer()
     end
+    return true
+end
+
+function openTreasureTrap()
+    yield("/p autofollow")
+    Sleep(1)
+    waitUntilPlayer
+    if AcquireTarget("treasure")==false then return false end
+    LogInfo("[Map] Treasure found")
+    treasurePos=Entity.Target.Position
+    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") do
+        if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
+            Movement(treasurePos.X,treasurePos.Y,treasurePos.Z,false)
+        end
+        yield("/p autooff")
+        Sleep(1)
+        yield("/p interactt")
+        Sleep(3)
+    end
+    LogInfo("[Map] Treasure opened")
+
+    repeat
+        Sleep(1)
+        waitUntilPlayer()
+    until not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!")
+    LogInfo("[Map] Enemies defeated")
+    return true
+end
+
+function openTreasure()
+    LogInfo("[Map] Try open treasure again")
+    waitUntilPlayer()
+    yield("/p autofollow")
+    Sleep(2)
+    if AcquireTarget("treasure")==false then return false end
+    LogInfo("[Map] Treasure found again")
+    treasurePos=Entity.Target.Position
+    while FindNearestObjectByName("trea",20)~=nil do
+        if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
+            Movement(treasurePos.X,treasurePos.Y,treasurePos.Z,false)
+        end
+        Sleep(1)
+        waitUntilPlayer()
+        yield("/p interactt")
+        Sleep(3)
+    end
+    LogInfo("[Map] Treasure opened give me loot")
+    return true
+end
+
+
+function usePortal()
+    LogInfo("[Map] Portal are you here ?")
+    waitUntilPlayer()
+    local wait=8
+    local t=0
+
+    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A portal has appeared.") do
+        Sleep(1)
+        t=t+1
+        if t==wait then do return false end end
+    end
+ 
+    LogInfo("[Map] Portal appears")
+    
+    repeat
+        waitUntilPlayer()
+
+        if AcquireTarget("Portal")==false then return false end
+        portalPos=Entity.Target.Position
+        if Vector3.Distance(Player.Entity.Position,portalPos) > 4 then
+            Movement(portalPos.X,portalPos.Y,portalPos.Z,false)
+        end
+        waitUntilPlayer()
+        yield("/p interactd")
+        Sleep(4)
+
+    until not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.")
     return true
 end
 
@@ -173,45 +252,22 @@ function processMap(zoneId, x, y)
     if MoveToMap(zoneId,x,y)==false then return false end
     Sleep(2)
     waitUntilPlayer()
-    if Dig()==false then return false end
+    if not dig() then return false end
 
-    yield("/p autofollow")
-    Sleep(1)
-    if AcquireTarget("treasure")==false then return false end
-    LogInfo("[Map] Treasure found")
-    Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false)
-    waitUntilPlayer()
-    LogInfo("[Map] Try opening")
-    yield("/p autooff")
-    Sleep(1)
-    yield("/p interactt")
-    Sleep(2)
-    waitUntilPlayer()
-    LogInfo("[Map] Try opening")
-    if AcquireTarget("treasure")==false then return false end
-    Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false)
-    yield("/p interactt")
-    Sleep(3)
-    waitUntilPlayer()
-    if AcquireTarget("Portal")==true then
-        LogInfo("[Map] Portal appears")
-        yield("/p interactd")
-        Sleep(4)
-        waitUntilPlayer()
+    if not openTreasureTrap() then return false end
+
+    if not openTreasure() then return false end
+
+    if usePortal() then
         LogInfo("[Map] Let's start duty")
+        Sleep(1)
+        waitUntilPlayer()
         runMap()
     end
+
+    LogInfo("[Map] Map done")
     Sleep(3)
     waitUntilPlayer()
-    yield("/p autooff")
-
-    --if MoveToMap(zoneId,x,y)==false then return false end
-    --if runMap()==false then return false end
-    --[[        MoveToMap(map,multi)
-
-        a=nearest_aetherite(map[1],Vector3(map[2],0,map[3]))
-        LogInfo(a.AetherId)
-    ]]
 end
 
 function main()
