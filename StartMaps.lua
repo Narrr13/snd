@@ -83,7 +83,7 @@ end
 function waitParty()
     LogInfo("[Map] Wait party "..Svc.Party.Length.." member(s)")
 
-    local countParty
+    local countParty=-1
     while countParty~=Svc.Party.Length do
         countParty=0
         for i=0,Svc.Party.Length-1 do
@@ -126,7 +126,7 @@ function MoveToMap(zoneId,x,y)
     
     local distanceAtleast = 200
     local tp=true
-    a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
+    local a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
         
     if zoneId==Svc.ClientState.TerritoryType then
         if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y))-distanceAtleast then tp=false end
@@ -145,9 +145,9 @@ function MoveToMap(zoneId,x,y)
     allTogether()
     mountAll()
         
-    posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
+    local posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
     if posMap ~= nil then
-    if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
+        if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
     end
         
     yield("/mount")
@@ -294,7 +294,7 @@ function main()
             local zoneId, x, y = map[1], map[2], map[3]
 
             if processMap(zoneId, x, y)==false then return false end
-            table.remove(arrayMap, index)
+            table.remove(arrayMap, indexMap)
         end
         break
      end
