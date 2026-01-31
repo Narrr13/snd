@@ -1,7 +1,7 @@
 require("NonuLuaLib")
 
 function main()
-    PathToObject("trea")
+    --PathToObject("trea")
     yield('/target trea')
     Sleep(1)
     yield('/interact')

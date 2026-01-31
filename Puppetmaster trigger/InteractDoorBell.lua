@@ -1,22 +1,22 @@
 require("NonuLuaLib") 
 
 function main()
-    PathToObject("Arcane")
+    --PathToObject("Arcane")
     yield('/target Arcane')
     Sleep(1)
     yield('/interact')
 
-    PathToObject("door")
+    --PathToObject("door")
     yield('/target door')
     Sleep(1)
     yield('/interact')
 
-    PathToObject("Gate")
+    --PathToObject("Gate")
     yield('/target Gate')
     Sleep(1)
     yield('/interact')
 
-    PathToObject("Portal")
+    --PathToObject("Portal")
     yield('/target Portal')
     Sleep(1)
     yield('/interact')
