@@ -47,9 +47,6 @@ function init()
     return true
 end
 
-function MoveToMaps(map,multi)
-
-end
 
 function openMap()
     local arrayMap = {}
@@ -97,9 +94,11 @@ end
 
 
 function waitParty()
-    LogInfo("[Map] Wait party member")
+    LogInfo("[Map] Wait party "..Svc.Party.Length.." member(s)")
+
+    local countParty
     while countParty~=Svc.Party.Length do
-        local countParty=0
+        countParty=0
         for i=0,Svc.Party.Length-1 do
             yield("/target "..Svc.Party[i].Name.TextValue)
             Sleep(0.5)
@@ -111,7 +110,15 @@ end
 
 
 function allTogether()
-
+    LogInfo("[Map] Regroup "..Svc.Party.Length.." member(s)")
+    yield("/p autooff")
+    Sleep(1)
+    yield("/p together")
+    yield("/p movedone")
+    --Wait they finished to move    
+    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"movedone")==false do
+        Sleep(1)
+    end
 end
 
 function MoveToMap(zoneId,x,y)
@@ -120,8 +127,6 @@ function MoveToMap(zoneId,x,y)
     a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
     
     if zoneId==Svc.ClientState.TerritoryType then
-        Echo(distance)
-        Echo(Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)))
         if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y))-distanceAtleast then tp=false end
     end
 
@@ -132,15 +137,12 @@ function MoveToMap(zoneId,x,y)
             Sleep(0.5)
         end
     end
-    --TP en cours
     waitUntilPlayer()
-    
     waitParty()
-    LogInfo("ils sont la")
     allTogether()
-    --Wait other part member
-    --All together
-    --Mount
+    --mount
+    --movetomap
+    --dismount
     
 
     
