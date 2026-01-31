@@ -84,16 +84,16 @@ function openMap(id,label,decipherId)
             Sleep(0.5)
             yield("/p <flag>")
             Sleep(1)
-            yield("/p mapOk")
+            yield("/p openMapDone")
         else
-            yield("/p mapKO")
+            yield("/p openMapDone")
         end
     else
         yield("/tmap")
         Sleep(0.5)
         yield("/p <flag>")
         Sleep(1)
-        yield("/p mapKO")
+        yield("/p openMapDone")
     end
 end
 

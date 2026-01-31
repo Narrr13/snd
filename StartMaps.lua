@@ -57,7 +57,7 @@ function openMap()
         yield("/p openmap70special")
     end
   
-    while checkChat("ChatLogPanel_3","mapOK") + checkChat("ChatLogPanel_3","mapKO") < Svc.Party.Length do
+    while checkChat("ChatLogPanel_3","openMapDone") < Svc.Party.Length do
         Sleep(1)
     end
     LogInfo("[Map] Maps open")
