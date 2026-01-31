@@ -1,7 +1,7 @@
 function waitUntilPlayer()
     LogInfo("[Map] Wait player")
     while IsPlayerAvailable("Really") ~= true do
-        Sleep(0.5)
+        Sleep(1)
     end
 end
 
