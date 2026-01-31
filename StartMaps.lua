@@ -17,6 +17,7 @@ require "NonuLuaLib"
 require "luaSharp"
 import("System.Numerics")
 require "NarLib"
+require "runMap"
 
 function spam()
     for i=1,20 do
@@ -30,25 +31,6 @@ function init()
         LogInfo("[Map] Wrong map setting")
         do return false end
     end
---[[
-    yield("/li Spriggan")
-    WaitForLifestream()
-    Sleep(1)
-    yield("/cwl7 tppp")
-    Sleep(20)
-    yield("/target Marcel Patoulachi")
-    yield"/invite"
-    Sleep(1)
-    yield("/target Jeanpierre Vidol")
-    yield"/invite"
-    Sleep(1)
-    yield("/target Robert Robichet")
-    yield"/invite"
-    Sleep(1)
-    yield("/maps")
-    yield("/p initCombat")
-    Sleep(2)
---]]
     return true
 end
 
@@ -140,10 +122,12 @@ end
 function MoveToMap(zoneId,x,y)
     spam()
     
+
+    
     local distanceAtleast = 200
     local tp=true
     a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
-    
+        
     if zoneId==Svc.ClientState.TerritoryType then
         if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y))-distanceAtleast then tp=false end
     end
@@ -160,24 +144,69 @@ function MoveToMap(zoneId,x,y)
     waitParty()
     allTogether()
     mountAll()
-    
+        
     posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
     if posMap ~= nil then
-     if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
+    if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
     end
-    
+        
     yield("/mount")
+  
     return true
     LogInfo("[Map] Move done")      
 end
 
+function Dig()
+    LogInfo("[Map] Try decipher map")
+    Sleep(2)
+    waitUntilPlayer()
+    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You find a treasure coffer!") == false do
+        yield("/p dig")
+        waitUntilPlayer()
+    end
+    return true
+end
 
 function processMap(zoneId, x, y)
-    LogInfo("[Map] Début Map "..zoneId.." "..x.." "..y)
+    LogInfo("[Map] Start map "..zoneId.." "..x.." "..y)
     if zoneId == nil or x == nil or y == nil then return false end
     if MoveToMap(zoneId,x,y)==false then return false end
-    
+    Sleep(2)
+    waitUntilPlayer()
+    if Dig()==false then return false end
 
+    yield("/p autofollow")
+    Sleep(1)
+    if AcquireTarget("treasure")==false then return false end
+    LogInfo("[Map] Treasure found")
+    Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false)
+    waitUntilPlayer()
+    LogInfo("[Map] Try opening")
+    yield("/p autooff")
+    Sleep(1)
+    yield("/p interactt")
+    Sleep(2)
+    waitUntilPlayer()
+    LogInfo("[Map] Try opening")
+    if AcquireTarget("treasure")==false then return false end
+    Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false)
+    yield("/p interactt")
+    Sleep(3)
+    waitUntilPlayer()
+    if AcquireTarget("Portal")==true then
+        LogInfo("[Map] Portal appears")
+        yield("/p interactd")
+        Sleep(4)
+        waitUntilPlayer()
+        LogInfo("[Map] Let's start duty")
+        runMap()
+    end
+    Sleep(3)
+    waitUntilPlayer()
+    yield("/p autooff")
+
+    --if MoveToMap(zoneId,x,y)==false then return false end
+    --if runMap()==false then return false end
     --[[        MoveToMap(map,multi)
 
         a=nearest_aetherite(map[1],Vector3(map[2],0,map[3]))
@@ -197,6 +226,9 @@ function main()
     
         if #arrayMap == 0 then 
             LogInfo("[Map] No more map")
+            waitUntilPlayer()
+            Sleep(1)
+            yield("/li Limsa Lominsa")
             return true
         end
         

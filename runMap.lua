@@ -323,8 +323,10 @@ FIN CHECK OUT FUNCTION
 
 
     
-function main()
+function runMap()
 
+    yield("/p autofollow")
+    Sleep(1)
     local checkDone = false
     local mapPlan = nil
         
@@ -393,4 +395,4 @@ end
 
 
 
-main()
+--main()
