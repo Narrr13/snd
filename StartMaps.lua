@@ -152,15 +152,15 @@ function MoveToMap(zoneId,x,y)
         
     yield("/mount")
   
-    return true
     LogInfo("[Map] Move done")      
+    return true     
 end
 
 function Dig()
-    LogInfo("[Map] Try decipher map")
+    LogInfo("[Map] Try dig ")
     Sleep(2)
     waitUntilPlayer()
-    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You find a treasure coffer!") == false do
+    while checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!") == false do
         yield("/p dig")
         waitUntilPlayer()
     end
