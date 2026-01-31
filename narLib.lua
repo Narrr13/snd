@@ -1,3 +1,10 @@
+function waitUntilPlayer()
+    LogInfo("[Map] Wait player")
+    while IsPlayerAvailable("Really") ~= true do
+        Sleep(0.5)
+    end
+end
+
 
 local aether_info = nil
 local net_info = nil

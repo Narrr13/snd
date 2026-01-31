@@ -94,19 +94,35 @@ local function findPriorityIndex(queue)
     return 1 -- no priority task → take first
 end
 
-function waitUntilPlayer()
-    LogInfo("[Map] Wait player")
-    while IsPlayerAvailable("Really") ~= true do
-        Sleep(0.5)
+
+
+function waitParty()
+    
+    while count~=Svc.Party.Length do
+        local countParty=0
+        for i=0,Svc.Party.Length-1 do
+            yield("/target "..Svc.Party[i].Name.TextValue)
+            Sleep(0.5)
+
+        end
     end
+    
+end
+
+
+function allTogether()
+
 end
 
 function MoveToMap(zoneId,x,y)
+    local distanceAtleast = 200
     local tp=true
-    a, dist =nearest_aetherite(zoneId,Vector3(x,0,y))
+    a, distance =nearest_aetherite(zoneId,Vector3(x,0,y))
     
     if zoneId==Svc.ClientState.TerritoryType then
-        if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)) then tp=false end
+        Echo(distance)
+        Echo(Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)))
+        if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y))-distanceAtleast then tp=false end
     end
 
     if tp then 
@@ -116,10 +132,16 @@ function MoveToMap(zoneId,x,y)
             Sleep(0.5)
         end
     end
-
-    
+    --TP en cours
     waitUntilPlayer()
-    LogInfo("TP terminé ?")
+    
+    waitParty()
+    allTogether()
+    --Wait other part member
+    --All together
+    --Mount
+    
+
     
 end
 
