@@ -121,6 +121,17 @@ function allTogether()
     end
 end
 
+function mountAll()
+    LogInfo("[Map] Mount incoming")
+    yield("/mount \"Regalia Type-G\"")
+    yield("/p mount")
+    Sleep(1)
+    yield("/p mounted")
+    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"mounted")==false do
+        Sleep(1)
+    end   
+end
+
 function MoveToMap(zoneId,x,y)
     local distanceAtleast = 200
     local tp=true
@@ -130,6 +141,7 @@ function MoveToMap(zoneId,x,y)
         if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y))-distanceAtleast then tp=false end
     end
 
+    waitUntilPlayer()
     if tp then 
         LogInfo("[Map] Teleportation incoming "..a.Name)
         Instances.Telepo:Teleport(a.AetherId, 0)
@@ -140,7 +152,8 @@ function MoveToMap(zoneId,x,y)
     waitUntilPlayer()
     waitParty()
     allTogether()
-    --mount
+    mountAll()
+    LogInfo("fin")
     --movetomap
     --dismount
     
