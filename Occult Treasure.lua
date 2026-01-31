@@ -94,11 +94,9 @@ function coffer()
         Movement(p.pos.X,p.pos.Y,p.pos.Z,false)
         if p.posPath == nil then
             if PathToObject("Trea") then 
-                yield("/echo Coffre trouvé : "..i)                   
                 yield('/target trea')
                 yield('/interact')
                 Sleep(0.5)    
-                yield("/echo Coffre ouvert : "..i) 
                 treasureOpen = treasureOpen + 1
             end
         end
@@ -113,11 +111,9 @@ function coffer()
         Movement(p.pos.X,p.pos.Y,p.pos.Z,false)
         if p.posPath == nil then
             if PathToObject("Trea") then 
-                yield("/echo Coffre trouvé : "..i)                   
                 yield('/target trea')
                 yield('/interact')
                 Sleep(0.5)    
-                yield("/echo Coffre ouvert : "..i) 
                 treasureOpen = treasureOpen + 1
             end
         end
