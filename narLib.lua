@@ -50,7 +50,7 @@ function nearest_aetherite(territory_id, goal_point)
         end
     end
 
-    return closest
+    return closest, distance
 end
 
 

@@ -94,14 +94,31 @@ local function findPriorityIndex(queue)
     return 1 -- no priority task → take first
 end
 
-function MoveToMap(zoneId,x,y)
-    local tp=false
-    a=nearest_aetherite(zoneId,Vector3(x,0,y)
-    
-    if zoneId==Svc.ClientState.TerritoryType then
-
+function waitUntilPlayer()
+    LogInfo("[Map] Wait player")
+    while IsPlayerAvailable("Really") ~= true do
+        Sleep(0.5)
     end
 end
+
+function MoveToMap(zoneId,x,y)
+    local tp=true
+    a, dist =nearest_aetherite(zoneId,Vector3(x,0,y)
+    
+    if zoneId==Svc.ClientState.TerritoryType then
+        if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)) then tp=false
+    end
+
+    if tp then 
+        LogInfo("[Map] Teleportation incoming "..a.Name)
+        Instances.Telepo:Teleport(a.AetherId, 0) end
+    end
+
+    waitUntilPlayer()
+    LogInfo("TP terminé ?")
+    
+end
+
 
 function processMap(zoneId, x, y)
     LogInfo("[Map] Début Map "..zoneId.." "..x.." "..y)
