@@ -106,12 +106,12 @@ function MoveToMap(zoneId,x,y)
     a, dist =nearest_aetherite(zoneId,Vector3(x,0,y)
     
     if zoneId==Svc.ClientState.TerritoryType then
-        if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)) then tp=false
+        if distance > Vector3.Distance(Player.Entity.Position,Vector3(x,0,y)) then tp=false end
     end
 
     if tp then 
         LogInfo("[Map] Teleportation incoming "..a.Name)
-        Instances.Telepo:Teleport(a.AetherId, 0) end
+        Instances.Telepo:Teleport(a.AetherId, 0)
         while Player.Entity.IsCasting ==false do
             Sleep(0.5)
         end
