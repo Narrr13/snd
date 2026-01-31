@@ -2,15 +2,16 @@ require("NonuLuaLib")
 
 if Svc.Party.Length ~= 0 then
     local partyLeaderName=Svc.Party[Svc.Party.PartyLeaderIndex].Name.TextValue
+    Echo(Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position))
+    if Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 2 then
     
-    while Entity.Target==nil or Entity.Target.Name~=partyLeaderName do
-        yield("/target "..partyLeaderName)
-        Sleep(0.5)
-    end
+        while Entity.Target==nil or Entity.Target.Name~=partyLeaderName do
+            yield("/target "..partyLeaderName)
+            Sleep(0.5)
+        end
 
-    if Vector3.Distance(Entity.Target.Position),Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 2 then
         if Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,1) then 
-            yield("/p movedone")
+                yield("/p movedone")
         end
     else
         yield("/p movedone")
