@@ -1,9 +1,56 @@
 
+local aether_info = nil
+local net_info = nil
+function load_aether_info()
+    if aether_info == nil then
+        local t = os.clock()
+        aether_info = {}
+        net_info = {}
+        local sheet = Excel.GetSheet("Aetheryte")
+        for r = 0, sheet.Count - 1 do
+            if os.clock() - t > 1.0 / 10.0 then
+                wait(0)
+                t = os.clock()
+            end
+            local row = sheet[r]
+            if Instances.Telepo:IsAetheryteUnlocked(r) then
+                if row.IsAetheryte then
+                    aether_info[row.RowId] = {
+                        AetherId = row.RowId,
+                        Name = row.PlaceName.Name,
+                        TerritoryId = row.Territory.RowId,
+                        Position = Instances.Telepo:GetAetherytePosition(r)
+                    }
+                end
+                if row.AethernetName.RowId ~= 0 then
+                    net_info[row.RowId] = {
+                        Group = row.AethernetGroup,
+                        Name = row.AethernetName.Name,
+                        TerritoryId = row.Territory.RowId,
+                        Position = Instances.Telepo:GetAetherytePosition(r),
+                        Invisible = row.Invisible
+                    }
+                end
+            end
+        end
+    end
+    return aether_info, net_info
+end
 
-function ConvertMapCoordToWorldCoord(mapCoord, zoneId)
-    local scaleOffset = 2048 / scale
-    local offsetAdjustment = 0.02 * offset
-    return (mapCoord - 1.0 - scaleOffset - offsetAdjustment) * 50.0
+function nearest_aetherite(territory_id, goal_point)
+    local closest = nil
+    local distance = nil
+    for _, row in pairs(load_aether_info()) do
+        if row.TerritoryId == territory_id then
+            local d = Vector3.Distance(goal_point, row.Position)
+            if closest == nil or d < distance then
+                closest = row
+                distance = d
+            end
+        end
+    end
+
+    return closest
 end
 
 
