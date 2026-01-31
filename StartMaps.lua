@@ -94,10 +94,26 @@ local function findPriorityIndex(queue)
     return 1 -- no priority task → take first
 end
 
+function MoveToMap(zoneId,x,y)
+    local tp=false
+    a=nearest_aetherite(zoneId,Vector3(x,0,y)
+    
+    if zoneId==Svc.ClientState.TerritoryType then
+
+    end
+end
 
 function processMap(zoneId, x, y)
-    LogInfo("[Map] Début Map"..zoneId.." "..x.." "..y)
+    LogInfo("[Map] Début Map "..zoneId.." "..x.." "..y)
     if zoneId == nil or x == nil or y == nil then return false end
+    if MoveToMap(zoneId,x,y)==false then return false end
+    
+
+    --[[        MoveToMap(map,multi)
+
+        a=nearest_aetherite(map[1],Vector3(map[2],0,map[3]))
+        LogInfo(a.AetherId)
+    ]]
 end
 
 function main()
@@ -107,7 +123,7 @@ function main()
     if not(init()) then do return end end
 
     --
-      while true do 
+    while true do 
         arrayMap=openMap()    
     
         if #arrayMap == 0 then 
@@ -120,25 +136,11 @@ function main()
             local map = arrayMap[indexMap]
             local zoneId, x, y = map[1], map[2], map[3]
 
-            processMap(zoneId, x, y)
+            if processMap(zoneId, x, y)==false then return false end
             table.remove(arrayMap, index)
         end
-
-            MoveToMap(map,multi)
-
-            a=nearest_aetherite(map[1],Vector3(map[2],0,map[3]))
-            LogInfo(a.AetherId)
-
---Move Coordinate
-            
-
-        end
         break
-
-
-        Sleep(1)
-      end
-   
+     end
 end
 
 
