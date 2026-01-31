@@ -8,7 +8,11 @@ if Svc.Party.Length ~= 0 then
         Sleep(0.5)
     end
 
-    if Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,1) then 
+    if Vector3.Distance(Entity.Target.Position),Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 2 then
+        if Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,1) then 
+            yield("/p movedone")
+        end
+    else
         yield("/p movedone")
     end
 end
