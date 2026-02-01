@@ -199,15 +199,19 @@ ACTION FUNCTION
 
 
 function action.moveTo(vect3)
+    LogInfo("[Run Map] Move to")
     if vect3.X == nil or vect3.Y == nil or vect3.Z == nil then return false end
+    LogInfo("[Run Map] "..vect3.X.." "..vect3.Y.." "..vect3.Z)
     return Movement(vect3.X,vect3.Y,vect3.Z,false)
 end
 
 
 function action.interact(multi,type)
+    LogInfo("[Run Map] Interact to")
     multi = multi or false
     if type==nil then return end
 
+    LogInfo("[Run Map] "..type)
     if type == "treasure" then
         yield("/p autooff")
         Sleep(1)
@@ -223,6 +227,7 @@ end
 
 function action.cleanBag (multi)
     -- defaut multi false
+    LogInfo("[Run Map] CleanBag")
     multi = multi or false
     
     if multi then
@@ -254,6 +259,7 @@ function action.cleanBag (multi)
 end
 
 function action.movealittle()
+    LogInfo("[Run Map] Move a little")
     yield ('/hold Z')
     Sleep(1)
     yield ('/release Z')    
@@ -269,6 +275,7 @@ CHECK IN FUNCTION
 ]]
 
 function checkIn.maxDistBetweenPlayerAndPos(vect3,distance)
+    LogInfo("[Run Map] Check In")
     if vect3.X==nil or vect3.Y==nil or vect3.Z==nil or type(distance)~="number" then return false end
     local pos = Player.Entity.Position
     local dx = vect3.X - pos.X
@@ -288,13 +295,14 @@ CHECK OUT FUNCTION
 ]]
 
 function checkOut.checkMsg(...)
+    LogInfo("[Run Map] Check msg")
     local patterns = {...}
     if #patterns == 0 then return false end
 
     while true do
         for _, pattern in ipairs(patterns) do
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
-                Echo("c'est ok")
+                LogInfo("[Run Map] Check msg OK")                    
                 return true
             end
         end
@@ -348,6 +356,7 @@ function runMap()
         if p.checkIn~=nil then
             local f = checkIn[p.checkIn[1]]
             if type(f) == "function" then
+                LogInfo("[Run Map] Call "..p.checkIn[1])
                 canContinue = f(table.unpack(p.checkIn[2]))
             else
                 canContinue = false
@@ -359,6 +368,7 @@ function runMap()
             if p.action ~= nil then 
                 local f = action[p.action[1]]
                 if type(f) == "function" then
+                    LogInfo("[Run Map] Call "..p.action[1])
                     f(table.unpack(p.action[2]))
                 else
                     return false
@@ -366,9 +376,9 @@ function runMap()
             end
 
             if p.checkOut ~= nil then
-                Echo("Check out a venir")
                 local f = checkOut[p.checkOut[1]]
                 if type(f) == "function" then
+                    LogInfo("[Run Map] Call "..p.checkout[1])
                     if f(table.unpack(p.checkOut[2])) == false then return false end
                 else
                     return false
