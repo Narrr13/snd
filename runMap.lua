@@ -85,10 +85,9 @@ local map60_558 = {
 
         -- Exit
         { action = { "moveTo", {Vector3(-0.15182304,-47.921295,-423.2599)} } },
-        { action = { "interact", {true, "exit"} } wait=1 }
+        { action = { "interact", {true, "exit"} }, wait=1 }
     }
 }
-
 
 local map70_794 = {
     zoneId = 794,
