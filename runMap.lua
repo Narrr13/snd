@@ -390,11 +390,11 @@ function runMap()
            
         end
             
-            yield("/p autofollow")
-            Sleep(1)
-            if Svc.ClientState.TerritoryType ~= mapPlan.zoneId then
-                return false
-            end           
+        yield("/p autofollow")
+        Sleep(1)
+        if Svc.ClientState.TerritoryType ~= mapPlan.zoneId then
+            return false
+        end           
     end
 
 end
