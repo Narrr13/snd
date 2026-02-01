@@ -89,6 +89,7 @@ local map60_558 = {
     }
 }
 
+
 local map70_794 = {
     zoneId = 794,
     actions = {
@@ -373,7 +374,7 @@ function runMap()
             if p.checkOut ~= nil then
                 local f = checkOut[p.checkOut[1]]
                 if type(f) == "function" then
-                    LogInfo("[Run Map] Call "..p.checkout[1])
+                    LogInfo("[Run Map] Call "..p.checkOut[1])
                     if f(table.unpack(p.checkOut[2])) == false then return false end
                 else
                     return false
@@ -400,4 +401,4 @@ end
 
 
 
---main()
+--runMap()
