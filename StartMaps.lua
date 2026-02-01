@@ -235,7 +235,7 @@ function usePortal()
         yield("/p interactd")
         Sleep(4)
 
-    until not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.")
+    until checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.")
     return true
 end
 
