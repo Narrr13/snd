@@ -290,7 +290,6 @@ function main()
             if processMap(zoneId, x, y)==false then return false end
             table.remove(arrayMap, indexMap)
         end
-        break
      end
 end
 
