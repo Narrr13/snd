@@ -11,7 +11,6 @@ GtabLog = {}
 local map60_558 = {
     zoneId = 558, 
     actions = {
-
         -- Coffre 1
         { action = { "moveTo", {Vector3(-0.40, 0.19, 339.54)} } },
         { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st chamber is no longer sealed!"}}, wait=1 },
@@ -73,25 +72,22 @@ local map60_558 = {
         { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 6th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
         -- Door 
-        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 }
---       ,
---[[
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 7 if door left
         { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.63135,-39.81079,-303.5477), 10} }, action = { "moveTo", {Vector3(-3.80, -47.50, -353.90)} } },
         -- Path to coffer 7 if door right
-        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84708,-39.78058,-304.0876), 10} }, action = { "moveTo", {Vector3()} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84708,-39.78058,-304.0876), 10} }, action = { "moveTo", {Vector3(-0.06167576,-48.017178,-363.23343)} } },
 
         -- Coffre 7
         { action = { "moveTo", {Vector3(-0.22, -47.78, -408.18)} } },
         { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 7th chamber is no longer sealed!"}}, wait=1 },
         { action = { "cleanBag", {true} } },
+
         -- Exit
+        { action = { "moveTo", {Vector3(-0.15182304,-47.921295,-423.2599)} } },
         { action = { "interact", {true, "exit"} } wait=1 }
---        { action = { "moveTo", {Vector3(-0.21, -47.97, -424.38)} }, action = { "interact", {true, "exit"} } }      
-        ]]
     }
 }
-
 
 
 local map70_794 = {
