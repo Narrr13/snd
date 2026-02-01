@@ -187,7 +187,7 @@ function openTreasureTrap()
     repeat
         Sleep(1)
         waitUntilPlayer()
-    until not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!")
+    until checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!")
     LogInfo("[Map] Enemies defeated")
     return true
 end
