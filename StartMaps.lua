@@ -176,9 +176,10 @@ function openTreasureTrap()
     LogInfo("[Map] Treasure found")
     treasurePos=Entity.Target.Position
     while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") do
-        if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
+        --[[if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
             Movement(treasurePos.X,treasurePos.Y,treasurePos.Z,false)
         end
+        --]]
         yield("/p autooff")
         Sleep(1)
         yield("/p interactt")
@@ -203,9 +204,10 @@ function openTreasure()
     LogInfo("[Map] Treasure found again")
     treasurePos=Entity.Target.Position
     while FindNearestObjectByName("trea",20)~=nil do
-        if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
+        --[[if Vector3.Distance(Player.Entity.Position,treasurePos) > 4 then
             Movement(treasurePos.X,treasurePos.Y,treasurePos.Z,false)
         end
+        --]]
         Sleep(1)
         waitUntilPlayer()
         yield("/p interactt")
@@ -235,9 +237,10 @@ function usePortal()
 
         if AcquireTarget("Portal")==false then return false end
         portalPos=Entity.Target.Position
-        if Vector3.Distance(Player.Entity.Position,portalPos) > 4 then
+        --[[if Vector3.Distance(Player.Entity.Position,portalPos) > 4 then
             Movement(portalPos.X,portalPos.Y,portalPos.Z,false)
         end
+        ((]]))
         waitUntilPlayer()
         yield("/p interactd")
         Sleep(4)
