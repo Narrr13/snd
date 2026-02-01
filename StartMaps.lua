@@ -228,9 +228,10 @@ function usePortal()
     
     repeat
         waitUntilPlayer()
-        if AcquireTarget("portal")==false then return false end
-        portalPos=Entity.Target.Position
-        PathToObject("portal",false,2)
+        if AcquireTarget("portal") then
+            portalPos=Entity.Target.Position
+            PathToObject("portal",false,2)
+        end
         waitUntilPlayer()
         yield("/p interactd")
         Sleep(4)
