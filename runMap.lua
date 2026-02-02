@@ -296,6 +296,7 @@ function checkOut.checkMsg(...)
     local patterns = {...}
     if #patterns == 0 then return false end
 
+    WaitForAddonVisible("ChatLogPanel_0")
     while true do
         for _, pattern in ipairs(patterns) do
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
