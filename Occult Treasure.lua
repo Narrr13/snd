@@ -93,11 +93,12 @@ function coffer()
         --if p.posPath == nil then yield("/echo "..i.." : "..p.pos.X.."  "..p.pos.Y.." "..p.pos.Z) end
         Movement(p.pos.X,p.pos.Y,p.pos.Z,false)
         if p.posPath == nil then
+            PathToObject("Trea")
             yield('/target trea')
             yield('/interact')
-            Sleep(0.5)    
-            yield("/echo Coffre ouvert")
+            Sleep(1)    
             treasureOpen = treasureOpen + 1
+            yield("/echo "..treasureOpen.." coffre(s) ouvert(s)")
         end
     end
 
@@ -109,11 +110,12 @@ function coffer()
         --if p.posPath == nil then yield("/echo "..i.." : "..p.pos.X.."  "..p.pos.Y.." "..p.pos.Z) end
         Movement(p.pos.X,p.pos.Y,p.pos.Z,false)
         if p.posPath == nil then           
+            PathToObject("Trea")
             yield('/target trea')
             yield('/interact')
-            Sleep(0.5)    
-            yield("/echo Coffre ouvert")
+            Sleep(1)    
             treasureOpen = treasureOpen + 1
+            yield("/echo "..treasureOpen.." coffre(s) ouvert(s)")
         end
     end
 
