@@ -107,15 +107,14 @@ function coffer()
 
     for _, p in ipairs(positions2) do
         i=i+1
-        if p.posPath == nil then yield("/echo "..i.." : "..p.pos.X.."  "..p.pos.Y.." "..p.pos.Z) end
+        --if p.posPath == nil then yield("/echo "..i.." : "..p.pos.X.."  "..p.pos.Y.." "..p.pos.Z) end
         Movement(p.pos.X,p.pos.Y,p.pos.Z,false)
-        if p.posPath == nil then
-            if PathToObject("Trea") then 
-                yield('/target trea')
-                yield('/interact')
-                Sleep(0.5)    
-                treasureOpen = treasureOpen + 1
-            end
+        if p.posPath == nil then           
+            yield('/target trea')
+            yield('/interact')
+            Sleep(0.5)    
+            yield("/echo Coffre ouvert")
+            treasureOpen = treasureOpen + 1
         end
     end
 
