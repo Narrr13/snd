@@ -44,7 +44,12 @@ function openMap()
         yield("/p openmap70special")
     end
   
-    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"openMapDone")==false do
+    
+    while true do
+        WaitForAddonVisible("ChatLogPanel_3")
+        if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"openMapDone") then
+            break
+        end
         Sleep(1)
     end
     LogInfo("[Map] Open maps done")
@@ -104,7 +109,12 @@ function allTogether()
     yield("/p together")
     yield("/p movedone")
     --Wait they finished to move    
-    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"movedone")==false do
+
+    while true do
+        WaitForAddonVisible("ChatLogPanel_3")        
+        if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"movedone") then
+            break
+        end
         Sleep(1)
     end
 end
@@ -115,7 +125,12 @@ function mountAll()
     yield("/p mount")
     Sleep(1)
     yield("/p mounted")
-    while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"mounted")==false do
+
+    while true do
+        WaitForAddonVisible("ChatLogPanel_3")
+        if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"mounted") then 
+            break 
+        end
         Sleep(1)
     end   
 end
@@ -161,9 +176,13 @@ function dig()
     LogInfo("[Map] Try dig ")
     Sleep(2)
     waitUntilPlayer()
-    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!")  do
+    while true do
         yield("/p dig")
         Sleep(2)
+        WaitForAddonVisible("ChatLogPanel_0")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!") then 
+            break
+        end
         waitUntilPlayer()
     end
     return true
@@ -176,21 +195,37 @@ function openTreasureTrap()
     if AcquireTarget("treasure")==false then return false end
     LogInfo("[Map] Treasure found")
     treasurePos=Entity.Target.Position
-    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") do
+    while true do
+    --not  do
         yield("/p autooff")
         PathToObject("treasure",false,2)
         yield("/p interactt")
-        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interacttdone") do
+        
+        while true do
+            WaitForAddonVisible("ChatLogPanel_3")
+            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"intertdone") then 
+                break 
+            end
             Sleep(0.1)
         end
         Sleep(1)
+        WaitForAddonVisible("ChatLogPanel_0")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") then 
+            break
+        end
+
     end
     LogInfo("[Map] Treasure opened")
 
-    repeat
+    while true do 
         Sleep(1)
         waitUntilPlayer()
-    until checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!")
+        WaitForAddonVisible("ChatLogPanel_0")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!") then
+            break
+        end
+    end
+
     LogInfo("[Map] Enemies defeated")
     return true
 end
@@ -209,7 +244,11 @@ function openTreasure()
         waitUntilPlayer()
         yield("/p interactt")
         
-        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interacttdone") do
+        while true do
+            WaitForAddonVisible("ChatLogPanel_3")
+            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"intertdone") then
+                break
+            end
             Sleep(0.1)
         end        
         Sleep(3)
@@ -225,7 +264,11 @@ function usePortal()
     local wait=8
     local t=0
 
-    while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A portal has appeared.") do
+    while true do
+        WaitForAddonVisible("ChatLogPanel_0")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A portal has appeared.") then
+            break
+        end
         Sleep(1)
         t=t+1
         if t==wait then do return false end end
@@ -233,7 +276,7 @@ function usePortal()
  
     LogInfo("[Map] Portal appears")
     
-    repeat
+    while true do
         waitUntilPlayer()
         if AcquireTarget("portal") then
             portalPos=Entity.Target.Position
@@ -241,12 +284,20 @@ function usePortal()
         end
         waitUntilPlayer()
         yield("/p interactd")
-        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interactddone") do
+        while true do
+            WaitForAddonVisible("ChatLogPanel_3")
+            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interactddone") then
+                break
+            end
             Sleep(0.1)
         end     
         Sleep(4)
 
-    until checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.")
+        WaitForAddonVisible("ChatLogPanel_0")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.") then
+            break
+        end
+    end 
     return true
 end
 

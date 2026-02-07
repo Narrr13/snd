@@ -6,7 +6,7 @@ function main()
     yield('/target trea')
     yield('/interact')
     Sleep(1)
-    yield('/p interacttdone')
+    yield('/p intertdone')
 end
 
 
