@@ -9,7 +9,7 @@ function main()
         yield('/target door')
         yield('/interact')
         Sleep(1)
-        yield('/p interactddone')
+        yield('/p interddone')
         return true
     elseif FindNearestObjectByName("arcane",50)~=nil then
         LogInfo("[Trigger] Arcane find")
@@ -17,7 +17,7 @@ function main()
         yield('/target Arcane')
         yield('/interact')
         Sleep(1)
-        yield('/p interactddone')
+        yield('/p interddone')
         return true
     elseif FindNearestObjectByName("gate",50)~=nil then
         LogInfo("[Trigger] Gate find")
@@ -25,7 +25,7 @@ function main()
         yield('/target gate')
         yield('/interact')
         Sleep(1)
-        yield('/p interactddone')        
+        yield('/p interddone')
         return true
     elseif FindNearestObjectByName("portal",50)~=nil then
         LogInfo("[Trigger] Portal find")
@@ -33,7 +33,7 @@ function main()
         yield('/target portal')
         yield('/interact')
         Sleep(1)
-        yield('/p interactddone')                
+        yield('/p interddone')
         return true
     elseif FindNearestObjectByName("exit",50)~=nil then
         LogInfo("[Trigger] Exit find")
@@ -41,13 +41,14 @@ function main()
         yield('/target exit')
         yield('/interact')
         Sleep(1)
-        yield('/p interactddone')                
+        yield('/p interddone')
         return true
     end
     return false
 end
 
 main()
+
 
 
 
