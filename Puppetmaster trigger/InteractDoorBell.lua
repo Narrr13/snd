@@ -3,7 +3,7 @@ require("NonuLuaLib")
 function main()
     LogInfo("[Trigger] InteractDoorDell")
 
-    if FindNearestObjectByName("door",50)~=nil do
+    if FindNearestObjectByName("door",50)~=nil then
         LogInfo("[Trigger] Door find")
         PathToObject("door",false,2)
         yield('/target door')
@@ -11,7 +11,7 @@ function main()
         Sleep(1)
         yield('/p interactddone')
         return true
-    elseif FindNearestObjectByName("arcane",50)~=nil do
+    elseif FindNearestObjectByName("arcane",50)~=nil then
         LogInfo("[Trigger] Arcane find")
         PathToObject("arcane",false,2)
         yield('/target Arcane')
@@ -19,7 +19,7 @@ function main()
         Sleep(1)
         yield('/p interactddone')
         return true
-    elseif FindNearestObjectByName("gate",50)~=nil do
+    elseif FindNearestObjectByName("gate",50)~=nil then
         LogInfo("[Trigger] Gate find")
         PathToObject("gate",false,2)
         yield('/target gate')
@@ -27,7 +27,7 @@ function main()
         Sleep(1)
         yield('/p interactddone')        
         return true
-    elseif FindNearestObjectByName("portal",50)~=nil do
+    elseif FindNearestObjectByName("portal",50)~=nil then
         LogInfo("[Trigger] Portal find")
         PathToObject("portal",false,2)
         yield('/target portal')
@@ -35,7 +35,7 @@ function main()
         Sleep(1)
         yield('/p interactddone')                
         return true
-    elseif FindNearestObjectByName("exit",50)~=nil do
+    elseif FindNearestObjectByName("exit",50)~=nil then
         LogInfo("[Trigger] Exit find")
         PathToObject("exit",false,2)
         yield('/target exit')
@@ -47,3 +47,4 @@ function main()
 end
 
 main()
+
