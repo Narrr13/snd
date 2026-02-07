@@ -1,10 +1,12 @@
 require("NonuLuaLib")
 
 function main()
+    LogInfo("[Trigger] InteractTreasure")
     PathToObject("trea",false,2)
     yield('/target trea')
-    Sleep(1)
     yield('/interact')
+    Sleep(1)
+    yield('/p interacttdone')
 end
 
 

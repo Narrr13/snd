@@ -92,37 +92,33 @@ local map60_558 = {
 
 local map70_794 = {
     zoneId = 794,
-    actions = {
+    actions = {        
         -- Summon 1    
-        { pos = Vector3(99.9,0.10,107.55), wait=2 },
-        { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},
-        { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action = { cmd="cleanBag", arg={true} } },
-        { pos = Vector3(100.08,0.10,99.97), wait=2 },
+        { action = { "moveTo", {Vector3(99.9,0.10,107.55)} } },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 2
-        { pos = Vector3(100.10,0,110.60), wait=3 },
-        { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},
-        { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action = { cmd="cleanBag", arg={true} } },
-        { pos = Vector3(100.08,0.10,99.97), wait=2 },
-        -- Summon 3
-        { pos = Vector3(100.10,0,110.60), wait=3 },
-        { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},
-        { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action = { cmd="cleanBag", arg={true} } },
-        { pos = Vector3(100.08,0.10,99.97), wait=2 },
+        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+          -- Summon 3
+        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 4
-        { pos = Vector3(100.10,0,110.60), wait=3 },
-        { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},
-        { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action = { cmd="cleanBag", arg={true} } },
-        { pos = Vector3(100.08,0.10,99.97), wait=2 },
+        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 5
-        { pos = Vector3(100.10,0,110.60), wait=3 },
-        { action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The summon is dispelled."},  
-        { pos = Vector3(100.08,0.10,99.97), action = { cmd="interact", arg={true, "treasure"} }, wait=7 },
-        { action = { cmd="cleanBag", arg={true} } },
-        { pos = Vector3(100.24,0,83.49), action = { cmd="interact", arg={true, "door"} }, wait=2 }
+        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(100.24,0,83.49)} } },
+        { action = { "interact", {true, "exit"} }}
     }
 }
 
@@ -212,7 +208,7 @@ function action.interact(multi,type)
         yield("/p autooff")
         Sleep(1)
         yield("/p interactt")      
-    elseif type == "door" or type == "bell" or type == "gate" or type == "exit" then
+    elseif type == "door" or type == "bell" or type == "gate" or type == "exit" or type == "arcane" then
         yield("/p autofollow")
         PathToObject(type,false,2)
         Sleep(3)

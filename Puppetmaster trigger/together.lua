@@ -2,7 +2,6 @@ require("NonuLuaLib")
 
 if Svc.Party.Length ~= 0 then
     local partyLeaderName=Svc.Party[Svc.Party.PartyLeaderIndex].Name.TextValue
-    Echo(Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position))
     if Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 2 then
     
         while Entity.Target==nil or Entity.Target.Name~=partyLeaderName do

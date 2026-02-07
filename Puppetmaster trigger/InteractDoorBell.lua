@@ -1,30 +1,49 @@
 require("NonuLuaLib") 
 
 function main()
-    PathToObject("Arcane",false,2)
-    yield('/target Arcane')
-    Sleep(1)
-    yield('/interact')
+    LogInfo("[Trigger] InteractDoorDell")
 
-    PathToObject("door",false,2)
-    yield('/target door')
-    Sleep(1)
-    yield('/interact')
-
-    PathToObject("Gate",false,2)
-    yield('/target Gate')
-    Sleep(1)
-    yield('/interact')
-
-    PathToObject("Portal",false,2)
-    yield('/target Portal')
-    Sleep(1)
-    yield('/interact')
-
-    PathToObject("exit",false,2)
-    yield('/target Exit')
-    Sleep(1)
-    yield('/interact')
+    if FindNearestObjectByName("door",50)~=nil do
+        LogInfo("[Trigger] Door find")
+        PathToObject("door",false,2)
+        yield('/target door')
+        yield('/interact')
+        Sleep(1)
+        yield('/p interactddone')
+        return true
+    elseif FindNearestObjectByName("arcane",50)~=nil do
+        LogInfo("[Trigger] Arcane find")
+        PathToObject("arcane",false,2)
+        yield('/target Arcane')
+        yield('/interact')
+        Sleep(1)
+        yield('/p interactddone')
+        return true
+    elseif FindNearestObjectByName("gate",50)~=nil do
+        LogInfo("[Trigger] Gate find")
+        PathToObject("gate",false,2)
+        yield('/target gate')
+        yield('/interact')
+        Sleep(1)
+        yield('/p interactddone')        
+        return true
+    elseif FindNearestObjectByName("portal",50)~=nil do
+        LogInfo("[Trigger] Portal find")
+        PathToObject("portal",false,2)
+        yield('/target portal')
+        yield('/interact')
+        Sleep(1)
+        yield('/p interactddone')                
+        return true
+    elseif FindNearestObjectByName("exit",50)~=nil do
+        LogInfo("[Trigger] Exit find")
+        PathToObject("exit",false,2)
+        yield('/target exit')
+        yield('/interact')
+        Sleep(1)
+        yield('/p interactddone')                
+        return true
+    end
 end
 
 main()

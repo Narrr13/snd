@@ -177,11 +177,13 @@ function openTreasureTrap()
     LogInfo("[Map] Treasure found")
     treasurePos=Entity.Target.Position
     while not checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") do
-        PathToObject("treasure",false,2)
         yield("/p autooff")
-        Sleep(1)
+        PathToObject("treasure",false,2)
         yield("/p interactt")
-        Sleep(3)
+        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interacttdone") do
+            Sleep(0.1)
+        end
+        Sleep(1)
     end
     LogInfo("[Map] Treasure opened")
 
@@ -206,6 +208,10 @@ function openTreasure()
         Sleep(1)
         waitUntilPlayer()
         yield("/p interactt")
+        
+        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interacttdone") do
+            Sleep(0.1)
+        end        
         Sleep(3)
     end
     LogInfo("[Map] Treasure opened give me loot")
@@ -235,6 +241,9 @@ function usePortal()
         end
         waitUntilPlayer()
         yield("/p interactd")
+        while not checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interactddone") do
+            Sleep(0.1)
+        end     
         Sleep(4)
 
     until checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.")

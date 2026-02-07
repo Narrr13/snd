@@ -1,7 +1,7 @@
 import("System.Numerics")
 require("NonuLuaLib")
 
-
+LogInfo("[Trigger] cleanBag")
 
 for i = 0, Svc.Objects.Length - 1 do
     local obj = Svc.Objects[i]
