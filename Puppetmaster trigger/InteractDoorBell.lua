@@ -44,7 +44,9 @@ function main()
         yield('/p interactddone')                
         return true
     end
+    return false
 end
 
-main()
+return main()
+
 
