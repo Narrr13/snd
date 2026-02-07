@@ -47,6 +47,7 @@ function main()
     return false
 end
 
-return main()
+main()
+
 
 
