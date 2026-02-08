@@ -135,10 +135,9 @@ function mountAll()
     end   
 end
 
+
 function MoveToMap(zoneId,x,y)
     spam()
-    
-
     
     local distanceAtleast = 200
     local tp=true
@@ -160,10 +159,17 @@ function MoveToMap(zoneId,x,y)
     waitParty()
     allTogether()
     mountAll()
-        
+
+    while not IPC.vnavmesh.IsReady() and t < 10 do
+        Sleep(0.1) 
+        t = t + 0.1
+    end           
     local posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
     if posMap ~= nil then
         if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
+    else
+        LogInfo("[Map]  Coordinates computer ko")
+        return false
     end
         
     yield("/mount")
@@ -199,6 +205,7 @@ function openTreasureTrap()
     --not  do
         yield("/p autooff")
         PathToObject("treasure",false,2)
+        spam()
         yield("/p interactt")
         
         while true do
@@ -242,6 +249,7 @@ function openTreasure()
         PathToObject("treasure",false,2)
         Sleep(1)
         waitUntilPlayer()
+        spam()
         yield("/p interactt")
         
         while true do
@@ -283,10 +291,11 @@ function usePortal()
             PathToObject("portal",false,2)
         end
         waitUntilPlayer()
+        spam()
         yield("/p interactd")
         while true do
             WaitForAddonVisible("ChatLogPanel_3")
-            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interactddone") then
+            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interddone") then
                 break
             end
             Sleep(0.1)
