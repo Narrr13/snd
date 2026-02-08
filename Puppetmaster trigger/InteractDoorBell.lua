@@ -44,8 +44,8 @@ function main()
         yield('/p interddone')
         return true
     end
-    return false
     yield('/p interddone')
+    return false
 end
 
 main()
