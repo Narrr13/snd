@@ -12,82 +12,82 @@ local map60_558 = {
     zoneId = 558, 
     actions = {
         -- Coffre 1
-        { label = "----------Treasure 1 Step 1----------", action = { "moveTo", {Vector3(-0.40, 0.19, 339.54)} } },
-        { label = "----------Treasure 1 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 1 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(-0.40, 0.19, 339.54)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door 
-        { label = "----------Treasure 1 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 2 if door left
-        { label = "----------Treasure 1 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.24386, 0.09999728, 321.8423), 10} }, action = { "moveTo", {Vector3(-3.54, -7.52, 269.17)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.24386, 0.09999728, 321.8423), 10} }, action = { "moveTo", {Vector3(-3.54, -7.52, 269.17)} } },
         -- Path to coffer 2 if door right
-        { label = "----------Treasure 1 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.988, 0.09999683, 321.5335), 10} }, action = { "moveTo", {Vector3(-0.008636862, -7.96638, 263.09412)} } },
-
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.988, 0.09999683, 321.5335), 10} }, action = { "moveTo", {Vector3(-0.008636862, -7.96638, 263.09412)} } },
+      
         -- Coffre 2
-        { label = "----------Treasure 2 Step 1----------", action = { "moveTo", {Vector3(0.04, -7.8, 214.89)} } },
-        { label = "----------Treasure 2 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 2nd chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(0.04, -7.8, 214.89)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 2nd chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door left
-        { label = "----------Treasure 2 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 3 if door left
-        { label = "----------Treasure 2 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.72284, -7.827942, 196.0631), 10} }, action = { "moveTo", {Vector3(-3.32, -15.52, 144.47)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.72284, -7.827942, 196.0631), 10} }, action = { "moveTo", {Vector3(-3.32, -15.52, 144.47)} } },
         -- Path to coffer 3 if door right
-        { label = "----------Treasure 2 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84485, -7.827942, 196.1852), 10} }, action = { "moveTo", {Vector3(-1.9026, -15.92, 137.43)} } },
-
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84485, -7.827942, 196.1852), 10} }, action = { "moveTo", {Vector3(-1.9026, -15.92, 137.43)} } },
+        
         -- Coffre 3
-        { label = "----------Treasure 3 Step 1----------", action = { "moveTo", {Vector3(0.26, -15.80, 90.19)} } },
-        { label = "----------Treasure 3 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 3rd chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 3 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(0.26, -15.80, 90.19)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 3rd chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door     
-        { label = "----------Treasure 3 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 4 if door left
-        { label = "----------Treasure 3 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.71966, -15.8052, 71.15055), 10} }, action = { "moveTo", {Vector3(-3.571, -23.45, 19.36)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.71966, -15.8052, 71.15055), 10} }, action = { "moveTo", {Vector3(-3.571, -23.45, 19.36)} } },
         -- Path to coffer 4 if door right
-        { label = "----------Treasure 3 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.66609, -15.8, 71.34743), 10} }, action = { "moveTo", {Vector3(-0.6318162, -23.96077, 12.559897)} } },
-
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.66609, -15.8, 71.34743), 10} }, action = { "moveTo", {Vector3(-0.6318162, -23.96077, 12.559897)} } },
+        
         -- Coffre 4
-        { label = "----------Treasure 4 Step 1----------", action = { "moveTo", {Vector3(0.009, -23.73, -34.92)} } },
-        { label = "----------Treasure 4 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 4th chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(0.009, -23.73, -34.92)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 4th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door 
-        { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 5 if door left
-        { label = "----------Treasure 4 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.68655,-23.79719,-53.73579), 10} }, action = { "moveTo", {Vector3(-4.37, -31.46, -105.58)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.68655,-23.79719,-53.73579), 10} }, action = { "moveTo", {Vector3(-4.37, -31.46, -105.58)} } },
         -- Path to coffer 5 if door right
-        { label = "----------Treasure 4 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.56171,-23.79719,-53.38192), 10} }, action = { "moveTo", {Vector3(-1.0583991,-31.999752,-113.785385)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.56171,-23.79719,-53.38192), 10} }, action = { "moveTo", {Vector3(-1.0583991,-31.999752,-113.785385)} } },
 
         -- Coffre 5
-        { label = "----------Treasure 5 Step 1----------", action = { "moveTo", {Vector3(-0.79, -31.74, -159.86)} } },
-        { label = "----------Treasure 5 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 5th chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 5 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(-0.79, -31.74, -159.86)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 5th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door 
-        { label = "----------Treasure 5 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 6 if door left
-        { label = "----------Treasure 5 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.82081,-31.78539,-179.0466), 10} }, action = { "moveTo", {Vector3(-4.18, -39.49, -229.39)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.82081,-31.78539,-179.0466), 10} }, action = { "moveTo", {Vector3(-4.18, -39.49, -229.39)} } },
         -- Path to coffer 6 if door right
-        { label = "----------Treasure 5 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.59067,-31.78539,-178.6838), 10} }, action = { "moveTo", {Vector3(0.0074997693,-39.9235,-237.82237)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.59067,-31.78539,-178.6838), 10} }, action = { "moveTo", {Vector3(0.0074997693,-39.9235,-237.82237)} } },
+
 
         -- Coffre 6
-        { label = "----------Treasure 6 Step 1----------", action = { "moveTo", {Vector3(-0.60, -39.77, -283.67)} } },
-        { label = "----------Treasure 6 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 6th chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 6 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(-0.60, -39.77, -283.67)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 6th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
         -- Door 
-        { label = "----------Treasure 6 Step 4----------", action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "interact", {true, "door"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
         -- Path to coffer 7 if door left
-        { label = "----------Treasure 6 Step 5----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.63135,-39.81079,-303.5477), 10} }, action = { "moveTo", {Vector3(-3.80, -47.50, -353.90)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(-18.63135,-39.81079,-303.5477), 10} }, action = { "moveTo", {Vector3(-3.80, -47.50, -353.90)} } },
         -- Path to coffer 7 if door right
-        { label = "----------Treasure 6 Step 6----------", checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84708,-39.78058,-304.0876), 10} }, action = { "moveTo", {Vector3(-0.06167576,-48.017178,-363.23343)} } },
+        { checkIn = { "maxDistBetweenPlayerAndPos", {Vector3(18.84708,-39.78058,-304.0876), 10} }, action = { "moveTo", {Vector3(-0.06167576,-48.017178,-363.23343)} } },
 
         -- Coffre 7
-        { label = "----------Treasure 7 Step 1----------", action = { "moveTo", {Vector3(-0.22, -47.78, -408.18)} } },
-        { label = "----------Treasure 7 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 7th chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 7 Step 3----------", action = { "cleanBag", {true} } },
+        { action = { "moveTo", {Vector3(-0.22, -47.78, -408.18)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 7th chamber is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
 
         -- Exit
-        { label = "----------Treasure 7 Step 4----------", action = { "moveTo", {Vector3(-0.15182304,-47.921295,-423.2599)} } },
-        { label = "----------Treasure 7 Step 5----------", action = { "interact", {true, "exit"} }, wait=1 }
+        { action = { "moveTo", {Vector3(-0.15182304,-47.921295,-423.2599)} } },
+        { action = { "interact", {true, "exit"} }, wait=1 }
     }
 }
-
 
 
 local map70_794 = {
@@ -342,11 +342,6 @@ function runMap()
     end
 
     for _, p in ipairs(mapPlan.actions) do
-        
-        if p.label~=nil and type(p.label)=="string" then
-            LogInfo(p.label)
-        end
-
         local canContinue = true
         if p.checkIn~=nil then
             local f = checkIn[p.checkIn[1]]
