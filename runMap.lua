@@ -95,27 +95,27 @@ local map70_794 = {
     actions = {        
         -- Summon 1    
         { action = { "moveTo", {Vector3(99.9,0.10,107.55)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
         { action = { "cleanBag", {true} } },
         { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 2
         { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
         { action = { "cleanBag", {true} } },
         { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
           -- Summon 3
         { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
         { action = { "cleanBag", {true} } },
         { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 4
         { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
         { action = { "cleanBag", {true} } },
         { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
         -- Summon 5
         { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled."}}, wait=1 },
+        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
         { action = { "cleanBag", {true} } },
         { action = { "moveTo", {Vector3(100.24,0,83.49)} } },
         { action = { "interact", {true, "exit"} }}
