@@ -94,31 +94,36 @@ local map70_794 = {
     zoneId = 794,
     actions = {        
         -- Summon 1    
-        { action = { "moveTo", {Vector3(99.9,0.10,107.55)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
-        { action = { "cleanBag", {true} } },
-        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+        { label = "----------Summon 1 Step 1----------", action = { "moveTo", {Vector3(99.9,0.10,107.55)} } },
+        { label = "----------Summon 1 Step 2----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 1 Step 3----------", action = { "cleanBag", {true} } },
+--        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+
         -- Summon 2
-        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
-        { action = { "cleanBag", {true} } },
-        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
-          -- Summon 3
-        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
-        { action = { "cleanBag", {true} } },
-        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 2 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 2 Step 2----------", action = { "cleanBag", {true} } },
+--        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+
+        -- Summon 3
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 3 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 3 Step 2----------", action = { "cleanBag", {true} } },
+--        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+
         -- Summon 4
-        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
-        { action = { "cleanBag", {true} } },
-        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 4 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 4 Step 2----------", action = { "cleanBag", {true} } },
+--        { action = { "moveTo", {Vector3(100.08,0.10,99.97)}}, wait=2 },       
+
         -- Summon 5
-        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
-        { action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
-        { action = { "cleanBag", {true} } },
-        { action = { "moveTo", {Vector3(100.24,0,83.49)} } },
-        { action = { "interact", {true, "exit"} }}
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 5 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by an Atomos asipu and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 5 Step 2----------", action = { "cleanBag", {true} } },
+--        { action = { "moveTo", {Vector3(100.24,0,83.49)} } },
+
+        { label = "----------Summon 5 Step 3----------", action = { "interact", {true, "exit"} } }
     }
 }
 
@@ -126,59 +131,66 @@ local map70_794 = {
 local map70_712 = {
     zoneId = 712,
     actions = {
-        -- Path to coffer 1
-        { action = { "moveTo", {Vector3(-0.07,149.99,392.68)} } },
-        { action = { "movealittle", {} }, wait=5},   
         -- Coffre 1
-        { action = { "moveTo", {Vector3(0.082,100.39,299.91)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The First Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },
+        { label = "----------Treasure 1 Step 1----------", action = { "moveTo", {Vector3(-0.07,149.99,392.68)} } },
+        { label = "----------Treasure 1 Step 2----------", action = { "movealittle", {} }, wait=5},   
+        { label = "----------Treasure 1 Step 3----------", action = { "moveTo", {Vector3(0.082,100.39,299.91)} } },
+        { label = "----------Treasure 1 Step 4----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The First Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 1 Step 5----------", action = { "cleanBag", {true} } },
         -- Door 
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},                  
+        { label = "----------Treasure 1 Step 6----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 1 Step 7----------", action = { "movealittle", {} }, wait=5},                  
+
         -- Coffre 2
-        { action = { "moveTo", {Vector3(-0.098,50.4,179.63)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Second Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },
+        { label = "----------Treasure 2 Step 1----------", action = { "moveTo", {Vector3(-0.098,50.4,179.63)} } },
+        { label = "----------Treasure 2 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Second Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true} } },
         -- Door
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},                  
-        -- Coffre3
-        { action = { "moveTo", {Vector3(0.02,0.40,60.21)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Third Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },
+        { label = "----------Treasure 2 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 2 Step 5----------", action = { "movealittle", {} }, wait=5},                  
+
+        -- Coffre 3
+        { label = "----------Treasure 3 Step 1----------", action = { "moveTo", {Vector3(0.02,0.40,60.21)} } },
+        { label = "----------Treasure 3 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Third Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 3 Step 3----------", action = { "cleanBag", {true} } },
         -- Door
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},     
-        -- Coffre4
-        { action = { "moveTo", {Vector3(0.04,-49.59,-60.14)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fourth Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },   
+        { label = "----------Treasure 3 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 3 Step 5----------", action = { "movealittle", {} }, wait=5},     
+
+        -- Coffre 4
+        { label = "----------Treasure 4 Step 1----------", action = { "moveTo", {Vector3(0.04,-49.59,-60.14)} } },
+        { label = "----------Treasure 4 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fourth Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},     
-        -- Coffre5
-        { action = { "moveTo", {Vector3(-0.45,-99.59,-179.02)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fifth Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },   
+        { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 4 Step 5----------", action = { "movealittle", {} }, wait=5},     
+
+        -- Coffre 5
+        { label = "----------Treasure 5 Step 1----------", action = { "moveTo", {Vector3(-0.45,-99.59,-179.02)} } },
+        { label = "----------Treasure 5 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fifth Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 5 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},     
-        -- Coffre6
-        { action = { "moveTo", {Vector3(-0.06,-149.59,-299.76)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Sixth Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },   
+        { label = "----------Treasure 5 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 5 Step 5----------", action = { "movealittle", {} }, wait=5},     
+
+        -- Coffre 6
+        { label = "----------Treasure 6 Step 1----------", action = { "moveTo", {Vector3(-0.06,-149.59,-299.76)} } },
+        { label = "----------Treasure 6 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Sixth Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 6 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
-        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { action = { "movealittle", {} }, wait=5},     
-        -- Coffre7
-        { action = { "moveTo", {Vector3(-0.18,-199.60,-420.02)} } },
-        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Seventh Sluice is no longer sealed!"}}, wait=1 },
-        { action = { "cleanBag", {true} } },   
+        { label = "----------Treasure 6 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { label = "----------Treasure 6 Step 5----------", action = { "movealittle", {} }, wait=5},     
+
+        -- Coffre 7
+        { label = "----------Treasure 7 Step 1----------", action = { "moveTo", {Vector3(-0.18,-199.60,-420.02)} } },
+        { label = "----------Treasure 7 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Seventh Sluice is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 7 Step 3----------", action = { "cleanBag", {true} } },   
+
         -- Exit
-        { action = { "interact", {true, "exit"} }, wait=1 }
+        { label = "----------Treasure 7 Step 4----------", action = { "interact", {true, "exit"} }, wait=1 }
     }
 }
+
 
 --[[
 ACTION FUNCTION
