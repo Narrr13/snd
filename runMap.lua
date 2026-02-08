@@ -127,61 +127,56 @@ local map70_712 = {
     zoneId = 712,
     actions = {
         -- Path to coffer 1
-        { pos = Vector3(-0.07,149.99,392.68) },
-        { action = { cmd="movealittle", arg={} }, wait=5},   
+        { action = { "moveTo", {Vector3(-0.07,149.99,392.68)} } },
+        { action = { "movealittle", {} }, wait=5},   
         -- Coffre 1
-        { pos = Vector3(0.082,100.39,299.91), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The First Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(0.082,100.39,299.91), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-20.18,100.00,279.70), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 2nd chamber opens." ,wait=7 },
-        -- Path to coffer 2
-        { action = { cmd="movealittle", arg={} }, wait=5},   
+        { action = { "moveTo", {Vector3(0.082,100.39,299.91)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The First Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        -- Door 
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},                  
         -- Coffre 2
-        { pos = Vector3(-0.098,50.4,179.63), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The Second Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(-0.098,50.4,179.63), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { zoneId = 712, pos = Vector3(-20.19,50.00,159.78), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 3rd chamber opens." ,wait=7 },
-        -- Path to coffer 3    
-        { action = { cmd="movealittle", arg={} }, wait=5},     
+        { action = { "moveTo", {Vector3(-0.098,50.4,179.63)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Second Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        -- Door
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},                  
         -- Coffre3
-        { pos = Vector3(0.02,0.40,60.21), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The Third Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(0.02,0.40,60.21), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left    
-        { zoneId = 712, pos = Vector3(-20.20,0.00,39.73), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 4th chamber opens." ,wait=7 },   
-        -- Path to coffer 4    
-        { action = { cmd="movealittle", arg={} }, wait=5}, 
+        { action = { "moveTo", {Vector3(0.02,0.40,60.21)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Third Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },
+        -- Door
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},     
         -- Coffre4
-        { pos = Vector3(0.04,-49.59,-60.14), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The Fourth Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(0.04,-49.59,-60.14), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-19.75,-49.89,-79.70), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 5th chamber opens." ,wait=7 },
-        -- Path to coffer 5
-        { action = { cmd="movealittle", arg={} }, wait=5},
+        { action = { "moveTo", {Vector3(0.04,-49.59,-60.14)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fourth Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },   
+        -- Door
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},     
         -- Coffre5
-        { pos = Vector3(-0.45,-99.59,-179.02), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The Fifth Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(-0.45,-99.59,-179.02), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-20.40,-99.99,-200.06), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the 6th chamber opens." ,wait=7 },       
-        -- Path to coffer 6
-        { action = { cmd="movealittle", arg={} }, wait=5},
+        { action = { "moveTo", {Vector3(-0.45,-99.59,-179.02)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Fifth Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },   
+        -- Door
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},     
         -- Coffre6
-        { pos = Vector3(-0.06,-149.59,-299.76), action = { cmd="interact", arg={true, "treasure"} }, checkOk = "%[(%d+):(%d+)%]The Sixth Sluice is no longer sealed!", wait=5 },
-        { pos = Vector3(-0.06,-149.59,-299.76), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
-        -- Door left
-        { pos = Vector3(-20.45,-149.99,-320.02), action = { cmd="interact", arg={true, "door"} }, checkOk = "%[(%d+):(%d+)%]The gate to the final chamber opens." ,wait=7 },       
-        -- Path to coffer 7
-        { action = { cmd="movealittle", arg={} }, checkOk = "%[(%d+):(%d+)%]The Sevventh Sluice is no longer sealed!", wait=5},   
+        { action = { "moveTo", {Vector3(-0.06,-149.59,-299.76)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Sixth Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },   
+        -- Door
+        { action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
+        { action = { "movealittle", {} }, wait=5},     
         -- Coffre7
-        { pos = Vector3(-0.18,-199.60,-420.02), action = { cmd="interact", arg={true, "treasure"} }, wait=5 },
-        { action = { cmd="cleanBag", arg={true} } },
+        { action = { "moveTo", {Vector3(-0.18,-199.60,-420.02)} } },
+        { action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The Seventh Sluice is no longer sealed!"}}, wait=1 },
+        { action = { "cleanBag", {true} } },   
         -- Exit
-        { pos = Vector3(0.08,-200.00,-436.21), action = { cmd="interact", arg={true, "door"} } }
+        { action = { "interact", {true, "exit"} }, wait=1 }
     }
 }
 
@@ -295,7 +290,7 @@ function checkOut.checkMsg(...)
 
     while true do
         for _, pattern in ipairs(patterns) do
-            WaitForAddonVisible("ChatLogPanel_0")
+                    WaitForAddonVisible("ChatLogPanel_0")
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), pattern, GtabLog) then
                 LogInfo("[Run Map] Check msg OK")                    
                 return true
