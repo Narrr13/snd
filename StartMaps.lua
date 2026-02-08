@@ -164,7 +164,7 @@ function MoveToMap(zoneId,x,y)
         Sleep(0.1) 
         t = t + 0.1
     end           
-    local posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,300,y/1000), true, 0)
+    local posMap= IPC.vnavmesh.PointOnFloor(Vector3(x/1000,500,y/1000), true, 0)
     if posMap ~= nil then
         if Movement(posMap.X,posMap.Y,posMap.Z,true)==false then return false end
     else
