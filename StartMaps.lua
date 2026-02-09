@@ -347,6 +347,7 @@ function main()
         if #arrayMap == 0 then 
             LogInfo("[Map] No more map")
             waitUntilPlayer()
+            yield("/p autooff")
             Sleep(1)
             yield("/li Limsa Lominsa")
             return true
@@ -365,22 +366,3 @@ end
 
 
 main()
---[[]
-    yield("/li Spriggan")
-    WaitForLifestream()
-    Sleep(1)
-    yield("/cwl7 tppp")
-    Sleep(20)
-    yield("/target Marcel Patoulachi")
-    yield"/invite"
-    Sleep(1)
-    yield("/target Jeanpierre Vidol")
-    yield"/invite"
-    Sleep(1)
-    yield("/target Robert Robichet")
-    yield"/invite"
-    Sleep(1)
-    yield("/maps")
-    yield("/p initCombat")
-    Sleep(2)
-]]

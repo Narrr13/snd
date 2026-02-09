@@ -12,9 +12,8 @@ if Svc.Party.Length ~= 0 then
         end
 
         LogInfo("[Trigger] Together move incoming")
-        if Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,1) then 
-                yield("/p movedone")
-        end
+        Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,1)
+        yield("/p movedone")
     else
         yield("/p movedone")
     end
