@@ -265,6 +265,22 @@ function action.movealittle()
     yield ('/release Z')    
 end
 
+function action.moveAndSlide()
+    LogInfo("[Run Map] Move & slide")
+
+    if moveWherePlayerLookAt(10,false)
+        while not Svc.Condition[61] do
+            Sleep(0.5)      
+        end
+        --Stop move
+        repeat
+            Sleep(0.5)      
+        until not Svc.Condition[61]
+        
+        return true
+    end
+    return false
+end
 --[[
 FIN ACTION IN FUNCTION
 ]]
