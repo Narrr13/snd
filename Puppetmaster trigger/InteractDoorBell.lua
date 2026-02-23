@@ -5,7 +5,7 @@ function main()
 
     if FindNearestObjectByName("door",50)~=nil then
         LogInfo("[Trigger] Door find")
-        PathToObject("door",false,2)
+        PathToObject("door",false,3)
         yield('/target door')
         yield('/interact')
         Sleep(1)
@@ -13,7 +13,7 @@ function main()
         return true
     elseif FindNearestObjectByName("arcane",50)~=nil then
         LogInfo("[Trigger] Arcane find")
-        PathToObject("arcane",false,2)
+        PathToObject("arcane",false,3)
         yield('/target Arcane')
         yield('/interact')
         Sleep(1)
@@ -21,7 +21,7 @@ function main()
         return true
     elseif FindNearestObjectByName("gate",50)~=nil then
         LogInfo("[Trigger] Gate find")
-        PathToObject("gate",false,2)
+        PathToObject("gate",false,3)
         yield('/target gate')
         yield('/interact')
         Sleep(1)
@@ -29,7 +29,7 @@ function main()
         return true
     elseif FindNearestObjectByName("portal",50)~=nil then
         LogInfo("[Trigger] Portal find")
-        PathToObject("portal",false,2)
+        PathToObject("portal",false,3)
         yield('/target portal')
         yield('/interact')
         Sleep(1)
@@ -37,7 +37,7 @@ function main()
         return true
     elseif FindNearestObjectByName("exit",50)~=nil then
         LogInfo("[Trigger] Exit find")
-        PathToObject("exit",false,2)
+        PathToObject("exit",false,3)
         yield('/target exit')
         yield('/interact')
         Sleep(1)
@@ -49,6 +49,7 @@ function main()
 end
 
 main()
+
 
 
 
