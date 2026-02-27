@@ -217,7 +217,10 @@ function action.interact(multi,type)
         yield("/p interactt")      
     elseif type == "door" or type == "bell" or type == "gate" or type == "exit" or type == "arcane" then
         yield("/p autofollow")
-        PathToObject(type,false,2)
+        yield("/target "..type)
+        Sleep(0.5)
+        if not string.find(string.lower(type), string.lower(Entity.Target.Name)) then return false end
+        Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,2)
         Sleep(3)
         yield("/p autooff")
         Sleep(1)
