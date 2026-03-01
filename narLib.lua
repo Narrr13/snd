@@ -29,7 +29,11 @@ function moveWherePlayerLookAt(dist,fly)
 end
 
 
-
+function spam()
+    for i=1,20 do
+       yield("/e 1") 
+    end
+end
 
 
 

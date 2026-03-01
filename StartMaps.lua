@@ -20,11 +20,7 @@ import("System.Numerics")
 require "NarLib"
 require "runMap"
 
-function spam()
-    for i=1,20 do
-       yield("/e 1") 
-    end
-end
+
 
 function init()
     

@@ -375,6 +375,7 @@ FIN CHECK OUT FUNCTION
     
 function runMap()
 
+    spam()
     yield("/p autofollow")
     Sleep(1)
     local checkDone = false
