@@ -9,9 +9,9 @@ function moveWherePlayerLookAt(dist,fly)
     local py = Entity.Player.Position.Y
     local pz = Entity.Player.Position.Z
 
-    local x = px + dist*math.cos(rotation)
+    local x = px + dist*math.sin(rotation)
     local y = py
-    local z = pz + dist*math.sin(rotation)
+    local z = pz + dist*math.cos(rotation)
 
     destination = Vector3(x, y, z)
 
@@ -20,7 +20,7 @@ function moveWherePlayerLookAt(dist,fly)
         return false
     end
 
-    local success = IPC.vnavmesh.PathfindAndMoveTo(destination, bool)
+    local success = IPC.vnavmesh.PathfindAndMoveTo(destination, fly)
     if not success then
         LogInfo("[Utils] Navmesh's PathfindAndMoveTo() failed to start pathing!")
         return false
