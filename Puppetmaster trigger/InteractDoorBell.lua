@@ -27,14 +27,6 @@ function main()
         Sleep(1)
         yield('/p interddone')
         return true
-    elseif FindNearestObjectByName("portal",50)~=nil then
-        LogInfo("[Trigger] Portal find")
-        PathToObject("portal",false,3)
-        yield('/target portal')
-        yield('/interact')
-        Sleep(1)
-        yield('/p interddone')
-        return true
     elseif FindNearestObjectByName("exit",50)~=nil then
         LogInfo("[Trigger] Exit find")
         PathToObject("exit",false,3)

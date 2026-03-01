@@ -292,7 +292,7 @@ function usePortal()
         end
         waitUntilPlayer()
         spam()
-        yield("/p interactd")
+        yield("/p interactportal")
         while true do
             WaitForAddonVisible("ChatLogPanel_3")
             if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"interddone") then
