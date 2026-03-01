@@ -25,7 +25,7 @@ function moveWherePlayerLookAt(dist,fly)
         LogInfo("[Utils] Navmesh's PathfindAndMoveTo() failed to start pathing!")
         return false
     end
-
+    return true
 end
 
 
