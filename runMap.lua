@@ -139,7 +139,8 @@ local map70_712 = {
         { label = "----------Treasure 1 Step 5----------", action = { "cleanBag", {true} } },
         -- Door 
         { label = "----------Treasure 1 Step 6----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 1 Step 7----------", action = { "movealittle", {} }, wait=5},                  
+        --{ label = "----------Treasure 1 Step 7----------", action = { "movealittle", {} }, wait=5},                  
+        { label = "----------Treasure 1 Step 7----------", action = { "moveAndSlide", {} }, wait=1},                  
 
         -- Coffre 2
         { label = "----------Treasure 2 Step 1----------", action = { "moveTo", {Vector3(-0.098,50.4,179.63)} } },
@@ -147,7 +148,8 @@ local map70_712 = {
         { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true} } },
         -- Door
         { label = "----------Treasure 2 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 2 Step 5----------", action = { "movealittle", {} }, wait=5},                  
+        --{ label = "----------Treasure 2 Step 5----------", action = { "movealittle", {} }, wait=5},                  
+        { label = "----------Treasure 2 Step 5----------", action = { "moveAndSlide", {} }, wait=1},                  
 
         -- Coffre 3
         { label = "----------Treasure 3 Step 1----------", action = { "moveTo", {Vector3(0.02,0.40,60.21)} } },
@@ -155,7 +157,8 @@ local map70_712 = {
         { label = "----------Treasure 3 Step 3----------", action = { "cleanBag", {true} } },
         -- Door
         { label = "----------Treasure 3 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 3 Step 5----------", action = { "movealittle", {} }, wait=5},     
+       -- { label = "----------Treasure 3 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        { label = "----------Treasure 3 Step 5----------", action = { "moveAndSlide", {} }, wait=1},     
 
         -- Coffre 4
         { label = "----------Treasure 4 Step 1----------", action = { "moveTo", {Vector3(0.04,-49.59,-60.14)} } },
@@ -163,7 +166,8 @@ local map70_712 = {
         { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
         { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 4 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        --{ label = "----------Treasure 4 Step 5----------", action = { "movealittle", {} }, wait=5},  
+        { label = "----------Treasure 4 Step 5----------", action = { "moveAndSlide", {} }, wait=1},                
 
         -- Coffre 5
         { label = "----------Treasure 5 Step 1----------", action = { "moveTo", {Vector3(-0.45,-99.59,-179.02)} } },
@@ -171,7 +175,8 @@ local map70_712 = {
         { label = "----------Treasure 5 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
         { label = "----------Treasure 5 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 6th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 5 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        --{ label = "----------Treasure 5 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        { label = "----------Treasure 5 Step 5----------", action = { "moveAndSlide", {} }, wait=1},     
 
         -- Coffre 6
         { label = "----------Treasure 6 Step 1----------", action = { "moveTo", {Vector3(-0.06,-149.59,-299.76)} } },
@@ -179,7 +184,8 @@ local map70_712 = {
         { label = "----------Treasure 6 Step 3----------", action = { "cleanBag", {true} } },   
         -- Door
         { label = "----------Treasure 6 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },
-        { label = "----------Treasure 6 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        --{ label = "----------Treasure 6 Step 5----------", action = { "movealittle", {} }, wait=5},     
+        { label = "----------Treasure 6 Step 5----------", action = { "moveAndSlide", {} }, wait=1},   
 
         -- Coffre 7
         { label = "----------Treasure 7 Step 1----------", action = { "moveTo", {Vector3(-0.18,-199.60,-420.02)} } },
@@ -284,6 +290,8 @@ function action.moveAndSlide()
             Sleep(0.1)      
         end
         --Stop move
+        IPC.vnavmesh.Stop()
+        
         repeat
             Sleep(0.1)      
         until not Svc.Condition[61]
