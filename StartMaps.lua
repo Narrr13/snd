@@ -215,7 +215,17 @@ function openTreasureTrap()
             end
             Sleep(0.1)
         end
-        Sleep(1)
+        
+        local k = 0
+        while true do
+            WaitForAddonVisible("ChatLogPanel_0")
+            if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") or k==100 then
+                break
+            end
+            Sleep(0.1)
+            k=k+1
+        end
+        
         WaitForAddonVisible("ChatLogPanel_0")
         if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") then 
             break
@@ -300,7 +310,18 @@ function usePortal()
             end
             Sleep(0.1)
         end     
-        Sleep(4)
+        
+
+        local k=0
+        
+        while true do
+            WaitForAddonVisible("ChatLogPanel_0")
+            if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.") or k==100 then
+                break
+            end
+            Sleep(0.1)
+            k=k+1
+        end
 
         WaitForAddonVisible("ChatLogPanel_0")
         if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),".-has begun.") then
