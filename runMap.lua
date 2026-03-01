@@ -285,7 +285,7 @@ end
 function action.moveAndSlide()
     LogInfo("[Run Map] Move & slide")
 
-    if moveWherePlayerLookAt(10,false)
+    if moveWherePlayerLookAt(10,false) then 
         while not Svc.Condition[61] do
             Sleep(0.1)      
         end
