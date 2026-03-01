@@ -1,7 +1,42 @@
+function moveWherePlayerLookAt(dist,fly)
+    local t=0
+    while not IPC.vnavmesh.IsReady() and t < 10 do
+        Sleep(0.1) 
+        t = t + 0.1
+    end    
+    local rotation = Svc.ClientState.LocalPlayer.Rotation
+    local px = Entity.Player.Position.X
+    local py = Entity.Player.Position.Y
+    local pz = Entity.Player.Position.Z
+
+    local x = px + dist*math.cos(rotation)
+    local y = py
+    local z = pz + dist*math.sin(rotation)
+
+    destination = Vector3(x, y, z)
+
+    if not IPC.vnavmesh.IsReady() then
+        LogInfo("[Utils] Navmesh not ready")
+        return false
+    end
+
+    local success = IPC.vnavmesh.PathfindAndMoveTo(destination, bool)
+    if not success then
+        LogInfo("[Utils] Navmesh's PathfindAndMoveTo() failed to start pathing!")
+        return false
+    end
+
+end
+
+
+
+
+
+
 function waitUntilPlayer()
     LogInfo("[Map] Wait player")
     while IsPlayerAvailable("Really") ~= true do
-        Sleep(1)
+        Sleep(0.5)
     end
 end
 
