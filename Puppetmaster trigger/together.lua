@@ -4,7 +4,7 @@ LogInfo("[Trigger] Together")
 
 if Svc.Party.Length ~= 0 then
     local partyLeaderName=Svc.Party[Svc.Party.PartyLeaderIndex].Name.TextValue
-    if Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 2 then
+    if Vector3.Distance(Entity.Player.Position,Svc.Party[Svc.Party.PartyLeaderIndex].Position) > 3 then
     
         while Entity.Target==nil or Entity.Target.Name~=partyLeaderName do
             yield("/target "..partyLeaderName)
@@ -18,3 +18,4 @@ if Svc.Party.Length ~= 0 then
         yield("/p movedone")
     end
 end
+
