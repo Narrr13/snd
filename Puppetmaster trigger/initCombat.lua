@@ -26,10 +26,12 @@ yield("/fulf on")
 yield("/fulf "..loot)
 yield("/gearset change "..gearset)
 Sleep(1)
-yield("/rotation auto big")
-yield("/bmrai on")
-
 yield("/li Spriggan")
 WaitForLifestream()
 yield("/li Limsa Lominsa")
 WaitForLifestream()
+
+yield("/rotation auto big")
+yield("/bmrai on")
+
+
