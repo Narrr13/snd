@@ -216,10 +216,18 @@ function action.interact(multi,type)
         Sleep(1)
         yield("/p interactt")      
     elseif type == "door" or type == "bell" or type == "gate" or type == "exit" or type == "arcane" then
+        LogInfo("a")
         yield("/p autofollow")
         yield("/target "..type)
-        Sleep(0.5)
-        if not string.find(string.lower(type), string.lower(Entity.Target.Name)) then return false end
+        LogInfo("B")
+        local k = 0    
+        while not string.find(string.lower(Entity.Target.Name),string.lower(type)) do
+            Sleep(0,1)
+            k=k+1
+            if k==10 then break end
+        end
+  
+        if not string.find(string.lower(Entity.Target.Name),string.lower(type)) then return false end
         Movement(Entity.Target.Position.X,Entity.Target.Position.Y,Entity.Target.Position.Z,false,2)
         Sleep(3)
         yield("/p autooff")
