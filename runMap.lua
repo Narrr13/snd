@@ -238,7 +238,12 @@ function action.interact(multi,type)
         Sleep(3)
         yield("/p autooff")
         Sleep(1)
-        yield("/p interactd")      
+        
+        if type == "exit" then
+            yield("/p interactexit")                  
+        else
+            yield("/p interactd")      
+        end
     end
 end
 

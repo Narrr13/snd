@@ -1,7 +1,7 @@
 require("NonuLuaLib") 
 
 function main()
-    LogInfo("[Trigger] InteractDoorDell")
+    LogInfo("[Trigger] InteractDoor")
 
     if FindNearestObjectByName("door",50)~=nil then
         LogInfo("[Trigger] Door find")
@@ -23,14 +23,6 @@ function main()
         LogInfo("[Trigger] Gate find")
         PathToObject("gate",false,3)
         yield('/target gate')
-        yield('/interact')
-        Sleep(1)
-        yield('/p interddone')
-        return true
-    elseif FindNearestObjectByName("exit",50)~=nil then
-        LogInfo("[Trigger] Exit find")
-        PathToObject("exit",false,3)
-        yield('/target exit')
         yield('/interact')
         Sleep(1)
         yield('/p interddone')
