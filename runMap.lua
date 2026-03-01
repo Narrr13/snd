@@ -281,11 +281,11 @@ function action.moveAndSlide()
 
     if moveWherePlayerLookAt(10,false)
         while not Svc.Condition[61] do
-            Sleep(0.5)      
+            Sleep(0.1)      
         end
         --Stop move
         repeat
-            Sleep(0.5)      
+            Sleep(0.1)      
         until not Svc.Condition[61]
         
         return true
