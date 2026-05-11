@@ -434,7 +434,7 @@ end
 --   distance (number): The distance to the found object, or math.huge if not found.
 function FindNearestObjectByName(targetName)
     --local player = Svc.ClientState.LocalPlayer
-    local player = Svc.Objects.LocalPlayer.LocalPlayer
+    local player = Svc.Objects.LocalPlayer
     local closestObject = nil
     local closestDistance = math.huge
 
