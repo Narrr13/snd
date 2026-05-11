@@ -433,7 +433,8 @@ end
 --   obj (table/object): The found game object (an Entity or similar type), or nil if not found.
 --   distance (number): The distance to the found object, or math.huge if not found.
 function FindNearestObjectByName(targetName)
-    local player = Svc.ClientState.LocalPlayer
+    --local player = Svc.ClientState.LocalPlayer
+    local player = Svc.Objects.LocalPlayer.LocalPlayer
     local closestObject = nil
     local closestDistance = math.huge
 

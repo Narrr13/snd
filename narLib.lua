@@ -4,7 +4,8 @@ function moveWherePlayerLookAt(dist,fly)
         Sleep(0.1) 
         t = t + 0.1
     end    
-    local rotation = Svc.ClientState.LocalPlayer.Rotation
+    --local rotation = Svc.ClientState.LocalPlayer.Rotation
+    local rotation = Svc.Objects.LocalPlayer.Rotation
     local px = Entity.Player.Position.X
     local py = Entity.Player.Position.Y
     local pz = Entity.Player.Position.Z
