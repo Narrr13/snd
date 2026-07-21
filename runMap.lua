@@ -228,6 +228,28 @@ local map80_924 = {
     }
 }
 
+local map80_879 = {
+    zoneId = 879,
+    actions = {
+        -- Coffre 1
+        { label = "----------Treasure 1 Step 1----------", action = { "moveTo", {Vector3(0.12616829574108,-39.97151184082,134.4405670166)} } },
+        { label = "----------Treasure 1 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st Chamber is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 1 Step 3----------", action = { "cleanBag", {true} } },
+        -- Door 
+        { label = "----------Treasure 1 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
+        { label = "----------Treasure 1 Step 7----------", action = { "moveAndSlide", {} }, wait=1},                  
+
+        -- Coffre 2
+        { label = "----------Treasure 2 Step 1----------", action = { "moveTo", {Vector3(-0.19967179000378,0.028538227081299,4.5366101264954)} } },
+        { label = "----------Treasure 2 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 2nd Chamber is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true} } },
+        -- Door 
+        { label = "----------Treasure 2 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
+        { label = "----------Treasure 2 Step 7----------", action = { "moveAndSlide", {} }, wait=1},                  
+   
+    }
+}
+
 --[[
 ACTION FUNCTION
 ]]
@@ -423,6 +445,9 @@ function runMap()
     elseif Svc.ClientState.TerritoryType == 924
     then
         mapPlan = map80_924
+    elseif Svc.ClientState.TerritoryType == 879
+    then
+        mapPlan = map80_879    
     else
         do return end
     end
