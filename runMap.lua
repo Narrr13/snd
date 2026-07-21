@@ -197,6 +197,36 @@ local map70_712 = {
     }
 }
 
+local map80_924 = {
+    zoneId = 924,
+    actions = {        
+        -- Summon 1    
+        { label = "----------Summon 1 Step 2----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by a secret sweeper and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 1 Step 3----------", action = { "cleanBag", {true} } },
+
+        -- Summon 2
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 2 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by a secret sweeper and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 2 Step 2----------", action = { "cleanBag", {true} } },
+
+        -- Summon 3
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 3 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by a secret sweeper and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 3 Step 2----------", action = { "cleanBag", {true} } },
+
+        -- Summon 4
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 4 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by a secret sweeper and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 4 Step 2----------", action = { "cleanBag", {true} } },
+
+        -- Summon 5
+--        { action = { "moveTo", {Vector3(100.10,0,110.60)} } },
+        { label = "----------Summon 5 Step 1----------", action = { "interact", {true, "arcane"} }, checkOut = {"checkMsg", {"The summon is dispelled.","You are devoured by a secret sweeper and wake far from the sanctum."}}, wait=1 },
+        { label = "----------Summon 5 Step 2----------", action = { "cleanBag", {true} } },
+
+        { label = "----------Summon 5 Step 3----------", action = { "interact", {true, "exit"} } }
+    }
+}
 
 --[[
 ACTION FUNCTION
@@ -390,6 +420,9 @@ function runMap()
     elseif Svc.ClientState.TerritoryType == 712
     then
         mapPlan = map70_712
+    elseif Svc.ClientState.TerritoryType == 924
+    then
+        mapPlan = map80_924
     else
         do return end
     end
