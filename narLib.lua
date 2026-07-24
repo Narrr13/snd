@@ -155,7 +155,8 @@ function checkChatLog(multi,str,pattern,tabLog)
         end     
     --Si pas multi
     else
-        localPattern="%[(.-)%]"..pattern.."$"
+        --localPattern="%[(.-)%]"..pattern.."$"
+        localPattern="%[(.-)%].-"..pattern.."$"
         lasth=nil
         lasti=nil
         for i=1,#strTab do   
