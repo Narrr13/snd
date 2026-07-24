@@ -337,15 +337,7 @@ function action.cleanBag (multi,gamba)
                     Sleep(2)
                 end
                 
-                spam()
-                LogInfo("[Run Map] Gamba done")         
-                
-                yield("/p cleanBag")
-                
-                while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"finiCleanbag",GtabLog)==false do
-                    Sleep(2)
-                end
-                Sleep(1)
+                LogInfo("[Run Map] Gamba done")                        
             end               
         end
         yield("/p autofollow")
