@@ -260,9 +260,13 @@ local map80_879 = {
         { label = "----------Treasure 4 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 4th Chamber is no longer sealed!"}}, wait=1 },
         { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true,true} } },
         -- Door 
-        { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
+        { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the final chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
         { label = "----------Treasure 4 Step 7----------", action = { "moveAndSlide", {} }, wait=1},     
 
+        -- Coffre 5
+        { label = "----------Treasure 5 Step 1----------", action = { "moveTo", {Vector3(0.08840312063694,120.03009796143,-377.77896118164)} } },
+        { label = "----------Treasure 5 Step 2----------", action = { "moveTo", {Vector3(0.040409952402115,120.03009796143,-399.5673828125)} } },
+        { label = "----------Treasure 5 Step 3----------", action = { "interact", {true, "exit"} }, wait=1 }
     }
 }
 
