@@ -531,7 +531,10 @@ function runMap()
             return false
         end           
     end
-
+    -- Si map incomplète, on attend de sortir en manuel
+    while Svc.ClientState.TerritoryType == mapPlan.zoneId do
+        Sleep(5)
+    end
 end
 
 
