@@ -234,7 +234,7 @@ local map80_879 = {
         -- Coffre 1
         { label = "----------Treasure 1 Step 1----------", action = { "moveTo", {Vector3(0.12616829574108,-39.97151184082,134.4405670166)} } },
         { label = "----------Treasure 1 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 1st Chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 1 Step 3----------", action = { "cleanBag", {true} } },
+        { label = "----------Treasure 1 Step 3----------", action = { "cleanBag", {true,true} } },
         -- Door 
         { label = "----------Treasure 1 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 2nd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
         { label = "----------Treasure 1 Step 7----------", action = { "moveAndSlide", {} }, wait=1},                  
@@ -242,11 +242,27 @@ local map80_879 = {
         -- Coffre 2
         { label = "----------Treasure 2 Step 1----------", action = { "moveTo", {Vector3(-0.19967179000378,0.028538227081299,4.5366101264954)} } },
         { label = "----------Treasure 2 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 2nd Chamber is no longer sealed!"}}, wait=1 },
-        { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true} } },
+        { label = "----------Treasure 2 Step 3----------", action = { "cleanBag", {true,true} } },
         -- Door 
         { label = "----------Treasure 2 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 3rd chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
         { label = "----------Treasure 2 Step 7----------", action = { "moveAndSlide", {} }, wait=1},                  
    
+        -- Coffre 3
+        { label = "----------Treasure 3 Step 1----------", action = { "moveTo", {Vector3(-0.099719919264317,40.029918670654,-125.90538787842)} } },
+        { label = "----------Treasure 3 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 3rd Chamber is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 3 Step 3----------", action = { "cleanBag", {true,true} } },
+        -- Door 
+        { label = "----------Treasure 3 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 4th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
+        { label = "----------Treasure 3 Step 7----------", action = { "moveAndSlide", {} }, wait=1},            
+    
+        -- Coffre 4
+        { label = "----------Treasure 4 Step 1----------", action = { "moveTo", {Vector3(0.047285933047533,80.029861450195,-256.75378417969)} } },
+        { label = "----------Treasure 4 Step 2----------", action = { "interact", {true, "treasure"} }, checkOut = {"checkMsg", {"The 4th Chamber is no longer sealed!"}}, wait=1 },
+        { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true,true} } },
+        -- Door 
+        { label = "----------Treasure 4 Step 4----------", action = { "interact", {true, "gate"} }, checkOut = {"checkMsg", {"The gate to the 5th chamber opens.","A trap is triggered! You are expelled from the area!"}}, wait=1 },  
+        { label = "----------Treasure 4 Step 7----------", action = { "moveAndSlide", {} }, wait=1},     
+
     }
 }
 
@@ -274,10 +290,8 @@ function action.interact(multi,type)
         Sleep(1)
         yield("/p interactt")      
     elseif type == "door" or type == "bell" or type == "gate" or type == "exit" or type == "arcane" then
-        LogInfo("a")
         yield("/p autofollow")
         yield("/target "..type)
-        LogInfo("B")
         local k = 0    
         while not string.find(string.lower(Entity.Target.Name),string.lower(type)) do
             Sleep(0,1)
@@ -299,10 +313,11 @@ function action.interact(multi,type)
     end
 end
 
-function action.cleanBag (multi)
-    -- defaut multi false
+function action.cleanBag (multi,gamba)
+    -- defaut multi,gamba false
     LogInfo("[Run Map] CleanBag")
     multi = multi or false
+    gamba = gamba or false
     
     if multi then
         yield("/p autooff")
@@ -315,6 +330,24 @@ function action.cleanBag (multi)
             Sleep(2)
         end
         Sleep(1)
+        if gamba then
+            if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), "The Gambler's Lure activates!", GtabLog) then
+                LogInfo("[Run Map] Gamba starts")         
+                while checkChatLog(false,GetNodeText("ChatLogPanel_3",1,2,3),"gambadone",GtabLog)==false do
+                    Sleep(2)
+                end
+                
+                spam()
+                LogInfo("[Run Map] Gamba done")         
+                
+                yield("/p cleanBag")
+                
+                while checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"finiCleanbag",GtabLog)==false do
+                    Sleep(2)
+                end
+                Sleep(1)
+            end               
+        end
         yield("/p autofollow")
     elseif multi == false then
         for i = 0, Svc.Objects.Length - 1 do
