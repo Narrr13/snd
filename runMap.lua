@@ -265,6 +265,7 @@ local map80_879 = {
 
         -- Coffre 5
         { label = "----------Treasure 5 Step 1----------", action = { "moveTo", {Vector3(0.08840312063694,120.03009796143,-377.77896118164)} } },
+        { label = "----------Treasure 4 Step 3----------", action = { "cleanBag", {true,true} } },
         { label = "----------Treasure 5 Step 2----------", action = { "moveTo", {Vector3(0.040409952402115,120.03009796143,-399.5673828125)} } },
         { label = "----------Treasure 5 Step 3----------", action = { "interact", {true, "exit"} }, wait=1 }
     }
@@ -337,6 +338,7 @@ function action.cleanBag (multi,gamba)
         if gamba then
             if checkChatLog(false, GetNodeText("ChatLogPanel_0",1,2,3), "The Gambler's Lure activates!", GtabLog) then
                 LogInfo("[Run Map] Gamba starts")         
+                yield("/p Gamba starts : type g a m b a d o n e without space to go ahead")
                 while checkChatLog(false,GetNodeText("ChatLogPanel_3",1,2,3),"gambadone",GtabLog)==false do
                     Sleep(2)
                 end
