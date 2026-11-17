@@ -24,7 +24,7 @@ require "runMap"
 
 function init()
     
-    if mapId==0 or (mapId~=12243 and mapId~=24794 and mapId~=33328 or mapId~=26745) then 
+    if mapId==0 or (mapId~=12243 and mapId~=24794 and mapId~=33328 and mapId~=26745) then 
         LogInfo("[Map] Wrong map setting")
         do return false end
     end
@@ -189,7 +189,9 @@ function dig()
         if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!") then 
             break
         end
+        LogInfo("[Map] Treasure found")
         waitUntilPlayer()
+        LogInfo("[Map] Dig end")
     end
     return true
 end
