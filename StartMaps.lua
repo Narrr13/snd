@@ -7,7 +7,7 @@ description: "Run maps"
 configs:
   mapId:
     default: 0
-    description: MapId you want to do (12243 for Dragon / for 24794 special 70 / 33328 for special 80)
+    description: MapId you want to do (12243 for Dragon / for 24794 special 70 / 33328 for special 80 / 26745 for 80)
 [[End Metadata]]
 --]=====]
 
@@ -24,7 +24,7 @@ require "runMap"
 
 function init()
     
-    if mapId==0 or (mapId~=12243 and mapId~=24794 and mapId~=33328) then 
+    if mapId==0 or (mapId~=12243 and mapId~=24794 and mapId~=33328 or mapId~=26745) then 
         LogInfo("[Map] Wrong map setting")
         do return false end
     end
@@ -40,6 +40,8 @@ function openMap()
         yield("/p openmap70special")
     elseif mapId==33328 then
         yield("/p openmap80special")
+    elseif mapId==26745 then
+        yield("/p openmap80")
     end
   
     
