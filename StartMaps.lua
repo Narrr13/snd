@@ -20,7 +20,8 @@ import("System.Numerics")
 require "NarLib"
 require "runMap"
 
-
+--Pour les cartes non 100% portail si ca va trop vite , le check log dig + ouverture coffre pose pb, il faut ajouter la table de suivi
+TABLOG={}
 
 function init()
     
@@ -186,7 +187,9 @@ function dig()
         yield("/p dig")
         Sleep(2)
         WaitForAddonVisible("ChatLogPanel_0")
-        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!") then 
+        LogInfo("[Map] Debug dig ici")
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You discover a treasure coffer!",TABLOG) then 
+            LogInfo("[Map] Debug dig la")            
             break
         end
         LogInfo("[Map] Treasure found")
@@ -212,7 +215,7 @@ function openTreasureTrap()
         
         while true do
             WaitForAddonVisible("ChatLogPanel_3")
-            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"intertdone") then 
+            if checkChatLog(true,GetNodeText("ChatLogPanel_3",1,2,3),"intertdone",TABLOG) then 
                 break 
             end
             Sleep(0.1)
@@ -221,7 +224,7 @@ function openTreasureTrap()
         local k = 0
         while true do
             WaitForAddonVisible("ChatLogPanel_0")
-            if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!") or k==100 then
+            if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"A trap springs, releasing a powerful musk into the air!",TABLOG) or k==100 then
                 break
             end
             Sleep(0.1)
@@ -240,7 +243,7 @@ function openTreasureTrap()
         Sleep(1)
         waitUntilPlayer()
         WaitForAddonVisible("ChatLogPanel_0")
-        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!") then
+        if checkChatLog(false,GetNodeText("ChatLogPanel_0",1,2,3),"You defeat all the enemies drawn by the trap!",TABLOG) then
             break
         end
     end
